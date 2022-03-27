@@ -1,5 +1,4 @@
 const container = document.querySelector('.container');
-const bookTitle = document.createElement('p');
 
 let myLibrary = [];
 
@@ -16,46 +15,57 @@ class Book {
     }
 }
 
-// test function added to Book prototype
-Book.prototype.sayHello = function () {
-    return console.log(`${this.title} say hi!`)
-}
-
-
 const theVirginSuicides = new Book (
     "The Virgin Suicides",
     "Jeffrey Eugenides",
-    "226",
+    248,
     true,
 );
 
 myLibrary.push(theVirginSuicides);
 
-function createCard() {
-    let cardWrap = document.createElement('div');
-    cardWrap.classList.add('card w-96 bg-base-100 shadow-xl');
-    let cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
-    container.appendChild(cardWrap);
-    cardWrap.appendChild(cardBody);
-}
+const steveJobs = new Book (
+    "Steve Jobs",
+    "Walter Isaacson",
+    710,
+    false,
+)
 
-function appendToCard(book) {
-    let bookTitle = document.createElement('p');
-    bookTitle.textContent = book.title;
-    let bookAuthor = document.createElement('p');
-    bookAuthor.textContent = book.author;
-    let bookPages = document.createElement('p');
-    bookPages.textContent = book.pages;
-    let bookRead = document.createElement('p');
-    bookRead.textContent = book.read;
-
-}
+myLibrary.push(steveJobs);
 
 function displayBooks(array) {
-    for (let i = 0; i <= array.length; i++) {
-        createCard(array.i);
-        appendToCard(array.i);
+    for (let i = 0; i < array.length; i++) {
+        // create card
+        let cardWrap = document.createElement('div');
+        cardWrap.classList.add('card', 'w-96', 'bg-base-100', 'shadow-xl');
+        let cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        container.appendChild(cardWrap);
+        cardWrap.appendChild(cardBody);
+
+        // append title
+        let bookTitle = document.createElement('p');
+        bookTitle.textContent = `Title: ${array[i].title}`;
+        cardBody.appendChild(bookTitle);
+
+        // append author
+        let bookAuthor = document.createElement('p');
+        bookAuthor.textContent = `Author: ${array[i].author}`;
+        cardBody.appendChild(bookAuthor);
+
+        // append pages
+        let bookPages = document.createElement('p');
+        bookPages.textContent = `Pages: ${array[i].pages}`;
+        cardBody.appendChild(bookPages);
+
+        // append read
+        let bookRead = document.createElement('p');
+        if (array[i].read) {
+        bookRead.textContent = "Read";
+        } else {
+        bookRead.textContent = "Unread";
+        }
+        cardBody.appendChild(bookRead);
     }
 }
 
