@@ -8,16 +8,20 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    // this.info = function () {
-    //     let printInfo = `${title} by ${author}, ${pages} pages, ${read}`;
-    //     return printInfo;
-    // }
+    this.printInfo = function() {
+        return `${title} by ${author}, ${pages} pages, ${read}`;
+    }
 }
 
-Book.prototype.info = function () {
-    this.printInfo = `${title} by ${author}, ${pages} pages, ${read}`;
-    return printInfo;
+Book.prototype.printInfo = function () {
+    return `${title} by ${author}, ${pages} pages, ${read}`;
 };
+
+// test function added to Book prototype
+Book.prototype.sayHello = function () {
+    return console.log(`${this.title} say hi!`)
+}
+
 
 const theVirginSuicides = new Book (
     "The Virgin Suicides",
@@ -29,6 +33,9 @@ const theVirginSuicides = new Book (
 myLibrary.push(theVirginSuicides);
 
 function addToLibrary() {
-    // loop over library array and display on page
+    for (let i = 0; i < myLibrary.length; i++) {
+        
+    }
 }
 
+bookInfo.textContent = theVirginSuicides.printInfo();
