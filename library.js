@@ -1,21 +1,20 @@
 const container = document.querySelector('.container');
-const bookInfo = document.querySelector('#book-info');
+const bookTitle = document.createElement('p');
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.printInfo = function() {
-        return `${title} by ${author}, ${pages} pages, ${read}`;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read;
+    }
+
+    printInfo() {
+        return `${title} by ${author}, ${pages} pages, read: ${read}`
     }
 }
-
-Book.prototype.printInfo = function () {
-    return `${title} by ${author}, ${pages} pages, ${read}`;
-};
 
 // test function added to Book prototype
 Book.prototype.sayHello = function () {
@@ -32,10 +31,32 @@ const theVirginSuicides = new Book (
 
 myLibrary.push(theVirginSuicides);
 
-function addToLibrary() {
-    for (let i = 0; i < myLibrary.length; i++) {
-        
+function createCard() {
+    let cardWrap = document.createElement('div');
+    cardWrap.classList.add('card w-96 bg-base-100 shadow-xl');
+    let cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+    container.appendChild(cardWrap);
+    cardWrap.appendChild(cardBody);
+}
+
+function appendToCard(book) {
+    let bookTitle = document.createElement('p');
+    bookTitle.textContent = book.title;
+    let bookAuthor = document.createElement('p');
+    bookAuthor.textContent = book.author;
+    let bookPages = document.createElement('p');
+    bookPages.textContent = book.pages;
+    let bookRead = document.createElement('p');
+    bookRead.textContent = book.read;
+
+}
+
+function displayBooks(array) {
+    for (let i = 0; i <= array.length; i++) {
+        createCard(array.i);
+        appendToCard(array.i);
     }
 }
 
-bookInfo.textContent = theVirginSuicides.printInfo();
+displayBooks(myLibrary);
