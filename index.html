@@ -22,14 +22,46 @@
     </section>
 
     <section>
-        <!-- grid to hold book cards-->
+        <form class="w-64 flex flex-col justify-center border-2">
 
-        <div class="container">
+            <div class="form-control">
+                <label class="label cursor-pointer" for="title">
+                    <span class="label-text p-2">Title:</span>
+                    <input type="text" id="title" name="book_title" placeholder="Ohio Haunts"
+                        class="input input-bordered input-sm">
+                </label>
+            </div>
 
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
-                </div>
-            </div> <!-- end of card -->
+            <div class="form-control">
+                <label class="label cursor-pointer" for="author">
+                    <span class="label-text">Author:</span>
+                    <input type="text" id="author" name="book_author" placeholder="Midge Mintz"
+                        class="input input-bordered input-sm">
+                </label>
+            </div>
+
+            <div class="form-control">
+                <label class="label cursor-pointer" for="pages">
+                    <span class="label-text">Pages:</span>
+                    <input type="number" id="pages" name="book_pages" placeholder="220"
+                        class="input input-bordered input-sm">
+                </label>
+            </div>
+
+            <div class="form-control">
+                <label class="label cursor-pointer" for="read">Read:</label>
+                <input class="toggle toggle-primary" type="checkbox" id="read" name="book_read">
+            </div>
+
+            <div class="justify-center">
+                <button id="add-button" class="btn-secondary rounded-md p-2" type="submit">Add book</button>
+            </div>
+
+        </form>
+    </section>
+
+    <section>
+        <div class="container flex">
 
         </div>
     </section>
