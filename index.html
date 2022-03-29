@@ -14,55 +14,63 @@
     <h1 class="text-3xl font-bold text-center">Library</h1>
 </header>
 
-<main class="m-4">
+<main class="m-8">
 
-    <section class="">
-        <h2 class="text-2xl font-bold">Your book collection:</h2>
-        <button class="justify-center text-white btn-primary rounded-lg p-2">Add New Book +</button>
-    </section>
+    <section id="form-section" class="flex flex-col justify-center">
 
-    <section>
-        <form class="w-64 flex flex-col justify-center border-2">
+        <h2 class="text-2xl font-bold text-primary flex-row">Add new book to collection:</h2>
 
-            <div class="form-control">
-                <label class="label cursor-pointer" for="title">
-                    <span class="label-text p-2">Title:</span>
-                    <input type="text" id="title" name="book_title" placeholder="Ohio Haunts"
-                        class="input input-bordered input-sm">
-                </label>
+        <form class="flex flex-wrap justify-center border-2 rounded-xl m-4" id="user-input-form">
+
+            <div class="flex flex-wrap p-1 text-center justify-center">
+
+                <div class="form-control m-1 p-1">
+                    <label class="label cursor-pointer" for="title">
+                        <span class="label-text p-2">Title:</span>
+                        <input type="text" id="title" name="book_title" placeholder="Ohio Haunts"
+                            class="bg-white input input-bordered input-primary input-sm" required>
+                    </label>
+                </div>
+                <div class="form-control m-1 p-1">
+                    <label class="label cursor-pointer" for="author">
+                        <span class="label-text p-2">Author:</span>
+                        <input type="text" id="author" name="book_author" placeholder="Midge Mintz"
+                            class="input input-bordered input-primary input-sm">
+                    </label>
+                </div>
+                <div class="form-control m-1 p-1">
+                    <label class="label cursor-pointer" for="pages">
+                        <span class="label-text p-2">Pages:</span>
+                        <input type="number" id="pages" name="book_pages" placeholder="220"
+                            class="input input-bordered input-sm">
+                    </label>
+                </div>
+
+                <div class="form-control m-1 p-1">
+                    <label class="label cursor-pointer" for="read">
+                        <span class="label-text p-2 text-accent">Read:</span>
+                        <div class="">
+                            <input class="toggle toggle-lg toggle-accent" type="checkbox" id="read" name="book_read">
+                        </div>
+                    </label>
+                </div>
+
             </div>
 
-            <div class="form-control">
-                <label class="label cursor-pointer" for="author">
-                    <span class="label-text">Author:</span>
-                    <input type="text" id="author" name="book_author" placeholder="Midge Mintz"
-                        class="input input-bordered input-sm">
-                </label>
-            </div>
+            <div class="flex lg:justify-center align-middle m-4">
 
-            <div class="form-control">
-                <label class="label cursor-pointer" for="pages">
-                    <span class="label-text">Pages:</span>
-                    <input type="number" id="pages" name="book_pages" placeholder="220"
-                        class="input input-bordered input-sm">
-                </label>
-            </div>
+                <div class="text-center">
+                    <button id="add-button" class="btn-primary rounded-md p-2" type="submit">Add book</button>
+                </div>
 
-            <div class="form-control">
-                <label class="label cursor-pointer" for="read">Read:</label>
-                <input class="toggle toggle-primary" type="checkbox" id="read" name="book_read">
-            </div>
-
-            <div class="justify-center">
-                <button id="add-button" class="btn-secondary rounded-md p-2" type="submit">Add book</button>
             </div>
 
         </form>
     </section>
 
-    <section>
-        <div class="container flex">
-
+    <section id="library-section">
+        <div class="container grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5 auto-rows-auto">
+            <!-- <div class="card shadow-xl w-64"></div> -->
         </div>
     </section>
 </main>
