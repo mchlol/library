@@ -18,11 +18,9 @@ Object constructor & prototype inheritance practice for [The Odin Project](https
  - To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype instance.  
 
 ### Pseudocode
-
-User clicks ‘new book’ button  
-Brings up a modal window with a form  
-Form inputs: title author pages read  
-User clicks ok - triggers a function  
+ 
+User inputs into form
+User clicks 'add book button - triggers a function  
 The function;  
 1. Creates a div element for the individual book card
 2. creates a p element for each input and sets the textContent to users input
