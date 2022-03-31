@@ -1,6 +1,7 @@
 // container and form
 const container = document.querySelector('.container');
 const form = document.querySelector('form');
+const addBtn = document.querySelector('#add-button')
 
 // inputs
 let inputTitle = document.querySelector('#title');
@@ -38,14 +39,12 @@ const theVirginSuicides = new Book (
 myLibrary.push(theVirginSuicides);
 
 // take the users input and create an object to be stored in the array
-function addToArray(input) { // where input is an object
-    // get data from the form
-    
-    // put the data into an object
-    input = new Book(input.title.value, input.author.value, input.pages.value, input.read.checked);
+function addToArray(book) {
+    // use the constructor on the input data
+    book = new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputRead.checked);
 
     // push the object to the library array
-    myLibrary.push(input);
+    myLibrary.push(newBook);
 
     // display it on the page
     return displayBooks(myLibrary);
@@ -93,4 +92,22 @@ function displayBooks(array) {
 }
 
 // call the display function!
-displayBooks(myLibrary);
+// displayBooks(myLibrary);
+
+addBtn.addEventListener('click', clickHandler());
+
+function clickHandler(event) {
+    store();
+}
+
+// form.onsubmit = function(event) {
+//     event.preventDefault();
+//     addToArray(event);
+//     myLibrary.push(Book);
+//     displayBooks(myLibrary);
+// }
+
+function store() {
+    let inputTitle = document.querySelector("#bookTitle");
+    localStorage.setItem("bookTitle", inputTitle.value);
+}
