@@ -25,6 +25,7 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 - Fix duplicate book array issue
 - Add read toggle to book display
 - Add a remove book function
+- Create form popup modal - use a new branch for this - it's good git practice.
 
 
 #### Extra resources used
