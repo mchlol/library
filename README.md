@@ -1,29 +1,32 @@
+# Library
+
 Object constructor & prototype inheritance practice for [The Odin Project](https://www.theodinproject.com)  
 [Link to lesson instructions](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library)   
 
+
 ### Tools
 
+- HTML
+- Vanilla JavaScript
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Daisy UI](https://daisyui.com/)  
+- [Daisy UI](https://daisyui.com/) for Tailwind CSS
 
-### Steps
 
-1. Create basic html structure
-2. Create an array to take users input and store new book objects into the array
-3. Write a function to loop through the array and display each book object on the page
-4. Add a "new book" button that brings up a form allowing users to input the details for the new book: title, author, number of pages, and whether it has been read.
-5. Add a button on each book's display to remove the book from the library  
-  - You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the index of the library array.
-6. Add a button on each book's display to change its `read` status.
- - To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype instance.  
+## About
 
-### Pseudocode
- 
-User inputs into form
-User clicks 'add book button - triggers a function  
-The function;  
-1. Creates a div element for the individual book card
-2. creates a p element for each input and sets the textContent to users input
-3. Creates a ‘delete book’ button (TBC)
-4. Append the p element to the card
-5. Append the div to the container
+The aim of this project is to create a single page library app, where a user can add information about a book and have it appear on the page.  
+One objective was to have a form popup on a button click, to enter the info, but I considered it better UX to have the form at the top of the page so it's more easily accessible, and more obvious how to add books to the library.  
+**This project is still in progress.**  
+
+
+### TO DO
+
+- Add read toggle to book display
+- Add a remove book function
+- Fix duplicate book array issue
+- Clear the form on submit
+
+#### Extra resources used
+
+- [Create object from form](https://www.sitepoint.com/community/t/create-object-from-a-form/313057/6)
+- [How to save data in localStorage using JavaScript](https://dev.to/michaelburrows/how-to-save-data-in-localstorage-using-javascript-994)
