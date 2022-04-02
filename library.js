@@ -10,9 +10,6 @@ let inputPages = document.querySelector('#pages');
 let inputRead = document.querySelector('#read');
 // if read checked === true mark book as read
 
-// array to hold all the objects
-let myLibrary = [];
-
 // book constructor
 class Book {
     constructor(title, author, pages, read) {
@@ -27,28 +24,33 @@ class Book {
     }
 }
 
-// test default object
+// array to hold all the objects
+let myLibrary = [];
 
-const theVirginSuicides = new Book (
-    "The Virgin Suicides",
-    "Jeffrey Eugenides",
-    248,
-    true,
-);
+form.onsubmit = function(e) {
+    e.preventDefault();
+    title = document.querySelector('#title').value;
+    author = document.querySelector('#author').value;
+    pages = document.querySelector('#pages').value;
+    read = document.querySelector('#read').checked;
 
-myLibrary.push(theVirginSuicides);
-
-// take the users input and create an object to be stored in the array
-function addToArray(book) {
-    // use the constructor on the input data
-    book = new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputRead.checked);
-
-    // push the object to the library array
+    let newBook = new Book(title,author,pages,read);
+    console.log(newBook);
     myLibrary.push(newBook);
-
-    // display it on the page
     return displayBooks(myLibrary);
 }
+
+// test default object
+
+// const theVirginSuicides = new Book (
+//     "The Virgin Suicides",
+//     "Jeffrey Eugenides",
+//     248,
+//     true,
+// );
+
+// myLibrary.push(theVirginSuicides);
+
 
 // display the library array on the page as separate cards
 function displayBooks(array) {
@@ -89,25 +91,4 @@ function displayBooks(array) {
         
         cardBody.appendChild(bookRead);
     }
-}
-
-// call the display function!
-// displayBooks(myLibrary);
-
-addBtn.addEventListener('click', clickHandler());
-
-function clickHandler(event) {
-    store();
-}
-
-// form.onsubmit = function(event) {
-//     event.preventDefault();
-//     addToArray(event);
-//     myLibrary.push(Book);
-//     displayBooks(myLibrary);
-// }
-
-function store() {
-    let inputTitle = document.querySelector("#bookTitle");
-    localStorage.setItem("bookTitle", inputTitle.value);
 }
