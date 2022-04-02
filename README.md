@@ -1,7 +1,8 @@
-# Library
+# Library - in progress
 
 Object constructor & prototype inheritance practice for [The Odin Project](https://www.theodinproject.com)  
 [Link to lesson instructions](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library)   
+
 
 
 ### Tools
@@ -15,16 +16,16 @@ Object constructor & prototype inheritance practice for [The Odin Project](https
 ## About
 
 The aim of this project is to create a single page library app, where a user can add information about a book and have it appear on the page.  
-One objective was to have a form popup on a button click, to enter the info, but I considered it better UX to have the form at the top of the page so it's more easily accessible, and more obvious how to add books to the library.  
-**This project is still in progress.**  
+One objective was to have a form popup on a button click, to enter the info, but I considered it better UX to have the form at the top of the page so it's more easily accessible, and more obvious how to add books to the library. *I should probably do it the way you're supposed to though.*  
+I used TailwindCSS for the first time on this project, it's very cool and makes things like themes and toggles a lot easier, but I do prefer to write my own CSS - it's way more fun.  
 
 
 ### TO DO
 
+- Fix duplicate book array issue
 - Add read toggle to book display
 - Add a remove book function
-- Fix duplicate book array issue
-- Clear the form on submit
+
 
 #### Extra resources used
 
