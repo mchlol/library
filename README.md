@@ -24,8 +24,9 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 
 ### TO DO
 
-- Fix duplicate book array issue - fixed: clear the container first on calling the display function, then run the rest of the display function.
-- Add read toggle to book display
+- Fix duplicate book array issue - *fixed: clear the container first on calling the display function, then run the rest of the display function.*
+- Add read toggle to book display - *fixed - new issue below*
+- link read toggle on book to array so it will update its status there too
 - Add a remove book function
 - Center the library 'cards' in the container
 - Create form popup modal - use a new branch for this - it's good git practice.
