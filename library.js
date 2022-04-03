@@ -19,8 +19,9 @@ class Book {
         this.read = read;
     }
 
-    printInfo() {
-        return `${title} by ${author}, ${pages} pages, read: ${read}`
+    bookRead(readStatus) {
+       // set the read toggle to on if true
+    //    readStatus ? toggleOn(): toggleOff();
     }
 }
 
@@ -37,23 +38,27 @@ form.onsubmit = function(e) {
     let newBook = new Book(title,author,pages,read);
     console.log(newBook);
     myLibrary.push(newBook);
+    form.reset();
     return displayBooks(myLibrary);
 }
 
 // test default object
 
-// const theVirginSuicides = new Book (
-//     "The Virgin Suicides",
-//     "Jeffrey Eugenides",
-//     248,
-//     true,
-// );
+const theVirginSuicides = new Book (
+    "The Virgin Suicides",
+    "Jeffrey Eugenides",
+    248,
+    true,
+);
 
-// myLibrary.push(theVirginSuicides);
+myLibrary.push(theVirginSuicides);
 
 
-// display the library array on the page as separate cards
+// display card for each item in array
+// remove everything and display it anew
+
 function displayBooks(array) {
+    container.innerHTML = "";
     for (let i = 0; i < array.length; i++) {
         // create card
         let cardWrap = document.createElement('div');
@@ -91,4 +96,10 @@ function displayBooks(array) {
         
         cardBody.appendChild(bookRead);
     }
+}
+
+displayBooks(myLibrary);
+
+function removeBook(id) {
+    // assign each book an id and access this to remove it from the DOM
 }
