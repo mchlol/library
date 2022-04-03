@@ -1,5 +1,7 @@
 # Library - in progress
 
+[WIP viewable here](https://mchlol.github.io/library/)
+
 Object constructor & prototype inheritance practice for [The Odin Project](https://www.theodinproject.com)  
 [Link to lesson instructions](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library)   
 
