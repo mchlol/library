@@ -20,8 +20,8 @@ class Book {
     }
 
     bookRead(readStatus) {
-       // set the read toggle to on if true
-    //    readStatus ? toggleOn(): toggleOff();
+        // when toggle is clicked update checked true/false 
+
     }
 }
 
@@ -36,7 +36,6 @@ form.onsubmit = function(e) {
     read = document.querySelector('#read').checked;
 
     let newBook = new Book(title,author,pages,read);
-    console.log(newBook);
     myLibrary.push(newBook);
     form.reset();
     return displayBooks(myLibrary);
@@ -60,6 +59,9 @@ myLibrary.push(theVirginSuicides);
 function displayBooks(array) {
     container.innerHTML = "";
     for (let i = 0; i < array.length; i++) {
+
+        // array[i].bookID = `book${array[i]}`; - no good
+
         // create card
         let cardWrap = document.createElement('div');
         cardWrap.classList.add('card', 'lg:w-72', 'sm:w-2/3', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4');
@@ -114,31 +116,10 @@ function displayBooks(array) {
         bookReadLabel.appendChild(readToggleByBook);
         bookRead.appendChild(bookReadLabel);
         
-
-
-        // ### old code ### 
-        // if (array[i].read) { // if true display in accent colour
-        // bookRead.textContent = "Read";
-        // bookRead.classList.add('text-accent');
-        // } else { // if false display in grey
-        // bookRead.textContent = "Unread";
-        // bookRead.classList.add('text-gray-400')
-        // }
-
-        /* ### html template literal ###
-`<div class="form-control m-1 p-1">
-                        <label class="label cursor-pointer" for="read">
-                            <span class="label-text p-2 text-accent">Read:</span>
-                            <div>
-                                <input class="toggle toggle-lg toggle-accent" type="checkbox" id="IDread"
-                                    name="bookID_read">
-                            </div>
-                        </label>
-                    </div>`
-        */
-        
         cardBody.appendChild(bookRead);
     }
+    assignIDToBook(myLibrary);
+    console.log(myLibrary);
 }
 
 displayBooks(myLibrary);
@@ -146,3 +127,10 @@ displayBooks(myLibrary);
 function removeBook(id) {
     // assign each book an id and access this to remove it from the DOM
 }
+
+function assignIDToBook(array) {
+    for (let i = 0; i < array.length; i++) {
+        let idNumber = i + 1; // start number from 1 instead of 0
+        array[i].bookID = idNumber;
+    }
+};
