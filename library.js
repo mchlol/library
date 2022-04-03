@@ -84,15 +84,50 @@ function displayBooks(array) {
         bookPages.textContent = `${array[i].pages} pages`;
         cardBody.appendChild(bookPages);
 
-        // append read
-        let bookRead = document.createElement('p');
-        if (array[i].read) { // if true display in accent colour
-        bookRead.textContent = "Read";
-        bookRead.classList.add('text-accent');
-        } else { // if false display in grey
-        bookRead.textContent = "Unread";
-        bookRead.classList.add('text-gray-400')
-        }
+        // append read ### NEW CODE ###
+        let bookRead = document.createElement('div');
+        bookRead.classList.add('form-control', 'm-1', 'p-1');
+        // cannot use innerHTML - need to access toggle so we can switch it on and off 
+        // we can create the label with some existing template literal then append the toggle under it
+        let bookReadLabel = document.createElement('label');
+        bookReadLabel.classList.add('label', 'cursor-pointer');
+        bookReadLabel.setAttribute('for', 'read');
+        // add the span for the label text inside the label tag
+        bookReadLabel.innerHTML = `
+        <span class="label-text p-2 text-accent">Read:</span>
+        `;
+        // note we cannot affect the colour without creating the span in a variable
+
+        // ** we are skipping the div that holds the toggle here **
+        let readToggleByBook = document.createElement('input');
+        readToggleByBook.classList.add('toggle', 'toggle-lg', 'toggle-accent');
+        readToggleByBook.setAttribute('type', 'checkbox');
+        // we can set the id to a number per book in array
+        readToggleByBook.setAttribute(`id`, `book${i}`);
+        array[i].read ? readToggleByBook.setAttribute('checked') : console.log('book read toggle was not on');
+        
+
+
+        // ### old code ### 
+        // if (array[i].read) { // if true display in accent colour
+        // bookRead.textContent = "Read";
+        // bookRead.classList.add('text-accent');
+        // } else { // if false display in grey
+        // bookRead.textContent = "Unread";
+        // bookRead.classList.add('text-gray-400')
+        // }
+
+        /* ### html template literal ###
+`<div class="form-control m-1 p-1">
+                        <label class="label cursor-pointer" for="read">
+                            <span class="label-text p-2 text-accent">Read:</span>
+                            <div>
+                                <input class="toggle toggle-lg toggle-accent" type="checkbox" id="IDread"
+                                    name="bookID_read">
+                            </div>
+                        </label>
+                    </div>`
+        */
         
         cardBody.appendChild(bookRead);
     }
