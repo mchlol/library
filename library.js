@@ -85,6 +85,7 @@ function displayBooks(array) {
         cardBody.appendChild(bookPages);
 
         // append read ### NEW CODE ###
+
         let bookRead = document.createElement('div');
         bookRead.classList.add('form-control', 'm-1', 'p-1');
         // cannot use innerHTML - need to access toggle so we can switch it on and off 
@@ -99,12 +100,19 @@ function displayBooks(array) {
         // note we cannot affect the colour without creating the span in a variable
 
         // ** we are skipping the div that holds the toggle here **
+        // create the toggle
         let readToggleByBook = document.createElement('input');
+        // add the classes to the input tag
         readToggleByBook.classList.add('toggle', 'toggle-lg', 'toggle-accent');
+        // add the input type as checkbox
         readToggleByBook.setAttribute('type', 'checkbox');
-        // we can set the id to a number per book in array
+        // we can set the input's id to a number per book in array
         readToggleByBook.setAttribute(`id`, `book${i}`);
-        array[i].read ? readToggleByBook.setAttribute('checked') : console.log('book read toggle was not on');
+        // if toggle checked is true, set the book's newly created toggle to checked
+        array[i].read ? readToggleByBook.checked = true : readToggleByBook.checked = false;
+        // append the input to the label 
+        bookReadLabel.appendChild(readToggleByBook);
+        bookRead.appendChild(bookReadLabel);
         
 
 
