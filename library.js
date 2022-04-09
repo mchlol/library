@@ -146,12 +146,23 @@ function removeBook(book) {
     displayBooks(myLibrary);
 }
 
-// call a function with the remove button ID to remove the corresponding BOOK ID from the library and run the display function again
+// call a function with the REMOVE BUTTON ID to remove the corresponding BOOK ID from the library and run the display function again
 
-    // there can only be element per ID. so how to check for equality? 
+    // there can only be one element per ID. so how to check for equality? 
     // put the id number FIRST - then check the first character of each ID string value? what if it's more than one digit?
-    // we need to separate the number from the letters
-    // REGEX
+    // we need to separate the numbers from the letters
+    // this means REGEX
+    // values so far include: 'removeBtn${i}', 'readToggle${i}', and 'bookID${i]'} - display eg. 'removeBtn1'. we wanna read the ${i} value so how to take the element and read the leftover numbers?
+    // how about checking for the presence of the element name eg 'removeBtn' and if it's in the string, remove it?
+    // we dont wanna mutate the ID itself though we just want to read what is left which will be the numbers - so lets store the separate values in new variables
+    // eg. elementName = 'removeBtn' & elementNo = '1';
+    // the number will be stored as a string
+    // so no type coercion - use loose equality instead of strict (== instead of ===)
+    // element.includes('string') returns a boolean - so if this returned true we could access the id with whatever we passed into the includes() method by storing that in a variable
+    // element.match('string') returns an array with whatever matches are found - we could read the array's first value and use that to  match an ID - if we want book 1, access array[${indexNo}] ?
+    // element.search('string') returns an index position - could be useful for something else
+
+
 
 
 // put an event listener on the book read toggle so we can update its status in the library array
