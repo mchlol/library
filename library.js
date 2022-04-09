@@ -1,9 +1,9 @@
-// container and form
+// access DOM elements
 const container = document.querySelector('.container');
 const form = document.querySelector('form');
 const addBtn = document.querySelector('#add-button')
 
-// inputs
+// access the individual form elements so we can read their values
 let inputTitle = document.querySelector('#title');
 let inputAuthor = document.querySelector('#author');
 let inputPages = document.querySelector('#pages');
@@ -25,15 +25,15 @@ class Book {
     }
 }
 
-// array to hold all the objects
+// array to hold all the book objects
 let myLibrary = [];
 
 form.onsubmit = function(e) {
-    e.preventDefault();
+    e.preventDefault(); // prevent the form from submitting
     title = document.querySelector('#title').value;
     author = document.querySelector('#author').value;
     pages = document.querySelector('#pages').value;
-    read = document.querySelector('#read').checked;
+    read = document.querySelector('#read').checked; // will return a boolean
 
     let newBook = new Book(title,author,pages,read);
     myLibrary.push(newBook);
@@ -41,7 +41,7 @@ form.onsubmit = function(e) {
     return displayBooks(myLibrary);
 }
 
-// test default object
+// create a default object and add it to the library array
 
 const theVirginSuicides = new Book (
     "The Virgin Suicides",
@@ -59,8 +59,6 @@ myLibrary.push(theVirginSuicides);
 function displayBooks(array) {
     container.innerHTML = "";
     for (let i = 0; i < array.length; i++) {
-
-        // array[i].bookID = `book${array[i]}`; - no good
 
         // create card
         let cardWrap = document.createElement('div');
@@ -86,8 +84,7 @@ function displayBooks(array) {
         bookPages.textContent = `${array[i].pages} pages`;
         cardBody.appendChild(bookPages);
 
-        // append read ### NEW CODE ###
-
+        // append read
         let bookRead = document.createElement('div');
         bookRead.classList.add('form-control', 'm-1', 'p-1');
         // cannot use innerHTML - need to access toggle so we can switch it on and off 
@@ -99,7 +96,7 @@ function displayBooks(array) {
         bookReadLabel.innerHTML = `
         <span class="label-text p-2 text-accent">Read:</span>
         `;
-        // note we cannot affect the colour without creating the span in a variable
+        // how to change read/unread colour - create the span in a variable & use an if statement to determine colour
 
         // ** we are skipping the div that holds the toggle here **
         // create the toggle
@@ -109,8 +106,8 @@ function displayBooks(array) {
         // add the input type as checkbox
         readToggleByBook.setAttribute('type', 'checkbox');
         // we can set the input's id to a number per book in array
-        readToggleByBook.setAttribute(`id`, `book${i}`);
-        // if toggle checked is true, set the book's newly created toggle to checked
+        readToggleByBook.setAttribute(`id`, `book${i}toggle`);
+        // if toggle checked is true, set the book's newly created toggle to checked as well
         array[i].read ? readToggleByBook.checked = true : readToggleByBook.checked = false;
         // append the input to the label 
         bookReadLabel.appendChild(readToggleByBook);
@@ -126,6 +123,7 @@ displayBooks(myLibrary);
 
 function removeBook(id) {
     // assign each book an id and access this to remove it from the DOM
+    
 }
 
 function assignIDToBook(array) {
@@ -134,3 +132,8 @@ function assignIDToBook(array) {
         array[i].bookID = idNumber;
     }
 };
+
+// put an event listener on the book read toggle so we can update its status in the library array
+
+
+
