@@ -52,12 +52,20 @@ const theVirginSuicides = new Book (
 
 myLibrary.push(theVirginSuicides);
 
+// assign each book an id based on its position in the library array
+function assignIDToBook(array) {
+    for (let i = 0; i < array.length; i++) {
+        let idNumber = i + 1; // start number from 1 instead of 0
+        array[i].bookID = idNumber;
+    }
+};
+
 
 // display card for each item in array
-// remove everything and display it anew
-
+// FIRST remove everything, then display everything again LAST
 function displayBooks(array) {
-    container.innerHTML = "";
+    container.innerHTML = ""; // remove everything 
+
     for (let i = 0; i < array.length; i++) {
 
         // create card
@@ -84,7 +92,7 @@ function displayBooks(array) {
         bookPages.textContent = `${array[i].pages} pages`;
         cardBody.appendChild(bookPages);
 
-        // append read
+        // create the read toggle ...
         let bookRead = document.createElement('div');
         bookRead.classList.add('form-control', 'm-1', 'p-1');
         // cannot use innerHTML - need to access toggle so we can switch it on and off 
@@ -96,9 +104,9 @@ function displayBooks(array) {
         bookReadLabel.innerHTML = `
         <span class="label-text p-2 text-accent">Read:</span>
         `;
-        // how to change read/unread colour - create the span in a variable & use an if statement to determine colour
+            // how to change read/unread colour - create the span in a variable & use an if statement to determine colour
 
-        // ** we are skipping the div that holds the toggle here **
+            // ** we are skipping the div that holds the toggle here **
         // create the toggle
         let readToggleByBook = document.createElement('input');
         // add the classes to the input tag
@@ -113,7 +121,14 @@ function displayBooks(array) {
         bookReadLabel.appendChild(readToggleByBook);
         bookRead.appendChild(bookReadLabel);
         
+        // ... append the read toggle to the card display
         cardBody.appendChild(bookRead);
+
+        // append remove btn
+        let removeBtn = document.createElement('button');
+        removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white');
+        removeBtn.textContent = "X";
+        cardBody.appendChild(removeBtn);
     }
     assignIDToBook(myLibrary);
     console.log(myLibrary);
@@ -121,17 +136,18 @@ function displayBooks(array) {
 
 displayBooks(myLibrary);
 
-function removeBook(id) {
-    // assign each book an id and access this to remove it from the DOM
-    
+
+function removeBook(book) {
+    // remove the book object with matching bookID value from the library array
+    myLibrary.pop(book);
+
+    // display the changed library array
+    displayBooks(myLibrary);
 }
 
-function assignIDToBook(array) {
-    for (let i = 0; i < array.length; i++) {
-        let idNumber = i + 1; // start number from 1 instead of 0
-        array[i].bookID = idNumber;
-    }
-};
+
+
+
 
 // put an event listener on the book read toggle so we can update its status in the library array
 
