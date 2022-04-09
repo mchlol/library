@@ -114,7 +114,7 @@ function displayBooks(array) {
         // add the input type as checkbox
         readToggleByBook.setAttribute('type', 'checkbox');
         // we can set the input's id to a number per book in array
-        readToggleByBook.setAttribute(`id`, `book${i}toggle`);
+        readToggleByBook.setAttribute(`id`, `readToggle${i+1}`);
         // if toggle checked is true, set the book's newly created toggle to checked as well
         array[i].read ? readToggleByBook.checked = true : readToggleByBook.checked = false;
         // append the input to the label 
@@ -126,8 +126,9 @@ function displayBooks(array) {
 
         // append remove btn
         let removeBtn = document.createElement('button');
-        removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white');
+        removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
         removeBtn.textContent = "X";
+        removeBtn.setAttribute(`id`, `removeBtn${i+1}`);
         cardBody.appendChild(removeBtn);
     }
     assignIDToBook(myLibrary);
@@ -145,11 +146,15 @@ function removeBook(book) {
     displayBooks(myLibrary);
 }
 
+// call a function with the remove button ID to remove the corresponding BOOK ID from the library and run the display function again
 
-
+    // there can only be element per ID. so how to check for equality? 
+    // put the id number FIRST - then check the first character of each ID string value? what if it's more than one digit?
+    // we need to separate the number from the letters
+    // REGEX
 
 
 // put an event listener on the book read toggle so we can update its status in the library array
 
-
+// if toggle is checked, update this status in the array
 
