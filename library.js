@@ -169,3 +169,4 @@ function removeBook(book) {
 
 // if toggle is checked, update this status in the array
 
+// how to check for an object with a certain ID in an array?
