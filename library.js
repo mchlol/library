@@ -19,11 +19,20 @@ class Book {
         this.read = read;
     }
 
-    bookRead(readStatus) {
-        // when toggle is clicked update checked true/false 
-
-    }
 }
+
+Book.prototype.removeBook = function() {
+    console.log(this);
+}
+
+Book.prototype.bookRead = function() {
+        if(this.read = true) {
+            console.log('Book read');
+        } else {
+            console.log("Book not read");
+        }
+    }
+    // bind each toggle to this 
 
 // array to hold all the book objects
 let myLibrary = [];
@@ -138,12 +147,15 @@ function displayBooks(array) {
 displayBooks(myLibrary);
 
 
-function removeBook(book) {
+function removeBook(bookID) { // where bookID is a single number value
     // remove the book object with matching bookID value from the library array
-    myLibrary.pop(book);
-
+    let bookID;
+    let removed = myLibrary[bookID-1]; // subtract 1 to get the right array index
+    myLibrary.pop(removed);
+    // Removes (mutates) the last element of an array, and returns that element
+console.log(removed);
     // display the changed library array
-    displayBooks(myLibrary);
+    return displayBooks(myLibrary);
 }
 
 // call a function with the REMOVE BUTTON ID to remove the corresponding BOOK ID from the library and run the display function again
@@ -170,3 +182,11 @@ function removeBook(book) {
 // if toggle is checked, update this status in the array
 
 // how to check for an object with a certain ID in an array?
+
+function updateReadStatus(readToggleID) {
+    // search myLibrary array for a bookID containing the same number as readToggleID
+    // if we want 11, make sure we get exactly 11 and not 1 and 11/12/etc
+    // if we use match, we get an array - so we could use that array to search for exactly 11 - 
+    // actually each id directly corresponds to the objects position in the array so we only need to look for that number minus 1. 
+
+}
