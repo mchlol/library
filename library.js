@@ -149,7 +149,6 @@ displayBooks(myLibrary);
 
 function removeBook(bookID) { // where bookID is a single number value
     // remove the book object with matching bookID value from the library array
-    let bookID;
     let removed = myLibrary[bookID-1]; // subtract 1 to get the right array index
     myLibrary.pop(removed);
     // Removes (mutates) the last element of an array, and returns that element
