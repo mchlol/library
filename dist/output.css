@@ -1222,10 +1222,6 @@ body[dir="rtl"] .checkbox:checked,
   margin: 0.25rem;
 }
 
-.m-2 {
-  margin: 0.5rem;
-}
-
 .flex {
   display: flex;
 }
@@ -1264,10 +1260,6 @@ body[dir="rtl"] .checkbox:checked,
 
 .gap-4 {
   gap: 1rem;
-}
-
-.justify-self-center {
-  justify-self: center;
 }
 
 .rounded-xl {
@@ -1338,15 +1330,6 @@ body[dir="rtl"] .checkbox:checked,
 .text-accent {
   --tw-text-opacity: 1;
   color: hsl(var(--a) / var(--tw-text-opacity));
-}
-
-.text-current {
-  color: currentColor;
-}
-
-.text-secondary {
-  --tw-text-opacity: 1;
-  color: hsl(var(--s) / var(--tw-text-opacity));
 }
 
 .shadow-xl {
