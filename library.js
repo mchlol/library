@@ -13,7 +13,7 @@ let inputPages = document.querySelector('#pages');
 let inputRead = document.querySelector('#read');
 // if read checked === true mark book as read
 
-let bookID = 0;
+let bookID = 1;
 
 // book constructor
 function Book(title, author, pages, read) {
@@ -21,17 +21,23 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.bookID = bookID++; // increment the global bookID variable so every object has a uniqe bookID, even when objects are removed from the array
-
-    // create the remove button & add the classes & textContent
-    this.removeBtn = document.createElement('button');
-        removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
-        removeBtn.textContent = "X";
-
+    this.bookID = bookID++; 
 }
 
 Book.prototype.removeBook = function() {
-    console.log(`Book ID${bookID} removed`);
+    console.log(`Remove ${this.bookID}`);
+    myLibrary.pop(this);
+    displayBooks();
+}
+
+Book.prototype.createButton = function(parent) {
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
+    removeBtn.textContent = "X";
+    removeBtn.id = this.title;
+    removeBtn.addEventListener('click', this.removeBook.bind(this), false);
+        removeBtn.addEventListener('onclick', this.removeBook.bind(this));
+        parent.appendChild(removeBtn);
 }
 
 
@@ -123,13 +129,7 @@ function displayBooks(array) {
         cardBody.appendChild(bookRead);
 
         // append remove btn
-        
-        let removeBtn = document.createElement('button');
-        removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
-        removeBtn.textContent = "X";
-        removeBtn.setAttribute(`id`, `removeBtn${i+1}`);
-        removeBtn.addEventListener('click', removeBook);
-        cardBody.appendChild(removeBtn);
+        array[i].createButton(cardBody);
     }
 
     console.log(myLibrary);
