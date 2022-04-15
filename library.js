@@ -1,3 +1,6 @@
+// array to hold all the book objects
+let myLibrary = [];
+
 // access DOM elements
 const container = document.querySelector('.container');
 const form = document.querySelector('form');
@@ -10,32 +13,39 @@ let inputPages = document.querySelector('#pages');
 let inputRead = document.querySelector('#read');
 // if read checked === true mark book as read
 
-// book constructor
-class Book {
-    constructor(title, author, pages, read) {
-        this.title = title
-        this.author = author
-        this.pages = pages
-        this.read = read;
-    }
+let bookID = 0;
 
+// book constructor
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.bookID = bookID++; 
 }
 
 Book.prototype.removeBook = function() {
+    
+    console.log(`Remove bookID ${this.bookID}`);
     console.log(this);
+    let indexOfThis = myLibrary.indexOf(this);
+    console.log(`index number: ${indexOfThis}`);
+    myLibrary.splice(indexOfThis,1); // this changes the index number of the object but the ID will remain the same
+    // calling the display function here returns undefined
+    return displayBooks(myLibrary);
 }
 
-Book.prototype.bookRead = function() {
-        if(this.read = true) {
-            console.log('Book read');
-        } else {
-            console.log("Book not read");
-        }
-    }
-    // bind each toggle to this 
 
-// array to hold all the book objects
-let myLibrary = [];
+Book.prototype.createButton = function(parent) {
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
+    removeBtn.textContent = "X";
+    removeBtn.id = this.title;
+    removeBtn.addEventListener('click', this.removeBook.bind(this), false);
+        removeBtn.addEventListener('onclick', this.removeBook.bind(this));
+        parent.appendChild(removeBtn);
+}
+
 
 form.onsubmit = function(e) {
     e.preventDefault(); // prevent the form from submitting
@@ -61,20 +71,11 @@ const theVirginSuicides = new Book (
 
 myLibrary.push(theVirginSuicides);
 
-// assign each book an id based on its position in the library array
-function assignIDToBook(array) {
-    for (let i = 0; i < array.length; i++) {
-        let idNumber = i + 1; // start number from 1 instead of 0
-        array[i].bookID = idNumber;
-    }
-};
-
 
 // display card for each item in array
 // FIRST remove everything, then display everything again LAST
 function displayBooks(array) {
     container.innerHTML = ""; // remove everything 
-
     for (let i = 0; i < array.length; i++) {
 
         // create card
@@ -134,58 +135,11 @@ function displayBooks(array) {
         cardBody.appendChild(bookRead);
 
         // append remove btn
-        let removeBtn = document.createElement('button');
-        removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
-        removeBtn.textContent = "X";
-        removeBtn.setAttribute(`id`, `removeBtn${i+1}`);
-        cardBody.appendChild(removeBtn);
+        array[i].createButton(cardBody);
     }
-    assignIDToBook(myLibrary);
+
     console.log(myLibrary);
 }
 
 displayBooks(myLibrary);
 
-
-function removeBook(bookID) { // where bookID is a single number value
-    // remove the book object with matching bookID value from the library array
-    let removed = myLibrary[bookID-1]; // subtract 1 to get the right array index
-    myLibrary.pop(removed);
-    // Removes (mutates) the last element of an array, and returns that element
-console.log(removed);
-    // display the changed library array
-    return displayBooks(myLibrary);
-}
-
-// call a function with the REMOVE BUTTON ID to remove the corresponding BOOK ID from the library and run the display function again
-
-    // there can only be one element per ID. so how to check for equality? 
-    // put the id number FIRST - then check the first character of each ID string value? what if it's more than one digit?
-    // we need to separate the numbers from the letters
-    // this means REGEX
-    // values so far include: 'removeBtn${i}', 'readToggle${i}', and 'bookID${i]'} - display eg. 'removeBtn1'. we wanna read the ${i} value so how to take the element and read the leftover numbers?
-    // how about checking for the presence of the element name eg 'removeBtn' and if it's in the string, remove it?
-    // we dont wanna mutate the ID itself though we just want to read what is left which will be the numbers - so lets store the separate values in new variables
-    // eg. elementName = 'removeBtn' & elementNo = '1';
-    // the number will be stored as a string
-    // so no type coercion - use loose equality instead of strict (== instead of ===)
-    // element.includes('string') returns a boolean - so if this returned true we could access the id with whatever we passed into the includes() method by storing that in a variable
-    // element.match('string') returns an array with whatever matches are found - we could read the array's first value and use that to  match an ID - if we want book 1, access array[${indexNo}] ?
-    // element.search('string') returns an index position - could be useful for something else
-
-
-
-
-// put an event listener on the book read toggle so we can update its status in the library array
-
-// if toggle is checked, update this status in the array
-
-// how to check for an object with a certain ID in an array?
-
-function updateReadStatus(readToggleID) {
-    // search myLibrary array for a bookID containing the same number as readToggleID
-    // if we want 11, make sure we get exactly 11 and not 1 and 11/12/etc
-    // if we use match, we get an array - so we could use that array to search for exactly 11 - 
-    // actually each id directly corresponds to the objects position in the array so we only need to look for that number minus 1. 
-
-}

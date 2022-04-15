@@ -26,9 +26,9 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 
 - Fix duplicate book array issue - *fixed: clear the container first on calling the display function, then run the rest of the display function.*
 - Add read toggle to book display - *fixed - new issue below*
-- assign each book an id - *fixed - made a separate function to assign number to library in a separate loop so they always remain the same*
+- assign each book an id - *fixed - create a global variable and increment it on the book constructor so the id is always different and doesn't change when items are removed from the array*
 - change read status of book in library array on toggle
-- Add a remove book function
+- Add a remove book function - *fixed: created the button and it's corresponding function on the **constructor**, get the index of the item in the array, and remove it with splice()*
 - Add a function to select & remove all selected books at once
 - Center the library 'cards' in the container
 - Create form popup modal
@@ -36,5 +36,9 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 
 #### Extra resources used
 
+- ["Module #11 - Prototypes, 'this', 'new' and Inheritance", from Beginner JavaScript by Wes Bos](https://beginnerjavascript.com/)
 - [Create object from form](https://www.sitepoint.com/community/t/create-object-from-a-form/313057/6)
 - [How to save data in localStorage using JavaScript](https://dev.to/michaelburrows/how-to-save-data-in-localstorage-using-javascript-994)
+- [Creating buttons in a JavaScript constructor](https://stackoverflow.com/questions/27913537/creating-buttons-in-a-javascript-constructor)
+- [Removing a specific item from an array](https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array)
+- [Global ID variable idea came from this student solution by jwern](https://github.com/jwern/library-app)
