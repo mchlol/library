@@ -42,3 +42,4 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 - [Creating buttons in a JavaScript constructor](https://stackoverflow.com/questions/27913537/creating-buttons-in-a-javascript-constructor)
 - [Removing a specific item from an array](https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array)
 - [Global ID variable idea came from this student solution by jwern](https://github.com/jwern/library-app)
+- [Delete a file from git and update in remote repo](https://stackoverflow.com/a/492591/17232226) - while watching my tailwind file I typed `-o /dist/output.css` instead of `-o ./dist/output.css` - forgot the dot before the location - and it duplicated the whole css file.  
