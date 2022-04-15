@@ -1326,6 +1326,10 @@ body[dir="rtl"] .checkbox:checked,
   margin: 0.25rem;
 }
 
+.m-5 {
+  margin: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -1391,12 +1395,16 @@ body[dir="rtl"] .checkbox:checked,
   padding: 0.5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
 
-.p-4 {
-  padding: 1rem;
+.p-3 {
+  padding: 0.75rem;
 }
 
 .text-center {
