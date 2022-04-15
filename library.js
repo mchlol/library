@@ -60,8 +60,14 @@ form.onsubmit = function(e) {
     return displayBooks(myLibrary);
 }
 
-// create a default object and add it to the library array
+// create some objects and add them to the library array
 
+const deepWork = new Book(
+    "Deep Work: Rules for Focused Success in a Distracted World",
+    "Cal Newport",
+    296,
+    true,
+)
 const theVirginSuicides = new Book (
     "The Virgin Suicides",
     "Jeffrey Eugenides",
@@ -69,7 +75,14 @@ const theVirginSuicides = new Book (
     true,
 );
 
-myLibrary.push(theVirginSuicides);
+const eastOfEden = new Book(
+    "East of Eden",
+    "John Steinbeck",
+    601,
+    false,
+);
+
+myLibrary.push(deepWork, theVirginSuicides, eastOfEden);
 
 
 // display card for each item in array
