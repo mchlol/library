@@ -13,7 +13,7 @@ let inputPages = document.querySelector('#pages');
 let inputRead = document.querySelector('#read');
 // if read checked === true mark book as read
 
-let bookID = 1;
+let bookID = 0;
 
 // book constructor
 function Book(title, author, pages, read) {
@@ -25,10 +25,16 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.removeBook = function() {
-    console.log(`Remove ${this.bookID}`);
-    myLibrary.pop(this);
-    displayBooks();
+    
+    console.log(`Remove bookID ${this.bookID}`);
+    console.log(this);
+    let indexOfThis = myLibrary.indexOf(this);
+    console.log(`index number: ${indexOfThis}`);
+    myLibrary.splice(indexOfThis,1); // this changes the index number of the object but the ID will remain the same
+    // calling the display function here returns undefined
+    return displayBooks(myLibrary);
 }
+
 
 Book.prototype.createButton = function(parent) {
     let removeBtn = document.createElement('button');
