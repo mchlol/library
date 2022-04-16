@@ -13,7 +13,7 @@ let inputPages = document.querySelector('#pages');
 let inputRead = document.querySelector('#read');
 // if read checked === true mark book as read
 
-let bookID = 0;
+let bookID = 0; // set a global variable 
 
 // book constructor
 function Book(title, author, pages, read) {
@@ -24,35 +24,74 @@ function Book(title, author, pages, read) {
     this.bookID = bookID++; 
 }
 
-Book.prototype.removeBook = function() {
-    
-    console.log(`Remove bookID ${this.bookID}`);
+// TOOGLE BOOK READ/UNREAD FUNCTION
+
+Book.prototype.bookRead = function() {
+    console.log(`Toggle read on bookID ${this.bookID}`);
     console.log(this);
+
     let indexOfThis = myLibrary.indexOf(this);
     console.log(`index number: ${indexOfThis}`);
-    myLibrary.splice(indexOfThis,1); // this changes the index number of the object but the ID will remain the same
-    // calling the display function here returns undefined
+    myLibrary[indexOfThis].read = !this.read; // set it to it's opposite on click
+
+    // change the value in the array
+    // myLibrary[indexOfThis].read ? readToggle.checked = true : readToggle.checked = false;
+}
+
+// CREATE THE READ TOGGLE
+Book.prototype.createToggle = function(parent) {
+        // create the read toggle ...
+        let bookReadContainer = document.createElement('div');
+        bookReadContainer.classList.add('form-control', 'm-1', 'p-1');
+        let bookReadLabel = document.createElement('label');
+        bookReadLabel.classList.add('label', 'cursor-pointer');
+        bookReadLabel.setAttribute('for', 'read');
+        bookReadLabel.innerHTML = `
+        <span class="label-text p-2 text-accent">Read:</span>
+        `;
+
+        let readToggle = document.createElement('input');
+        readToggle.classList.add('toggle', 'toggle-lg', 'toggle-accent');
+        readToggle.setAttribute('type', 'checkbox');
+
+        this.read ? readToggle.checked = true : readToggle.checked = false;
+
+        readToggle.addEventListener('click', this.bookRead.bind(this), false);
+        readToggle.addEventListener('onclick', this.bookRead.bind(this));
+
+        bookReadLabel.appendChild(readToggle);
+        bookReadContainer.appendChild(bookReadLabel);
+        parent.appendChild(bookReadContainer);
+}
+
+// REMOVE BOOK FUNCTION
+Book.prototype.removeBook = function() {
+    console.log(`Remove bookID ${this.bookID}`);
+    console.log(this);
+
+    let indexOfThis = myLibrary.indexOf(this);
+    console.log(`index number: ${indexOfThis}`);
+    myLibrary.splice(indexOfThis,1);
     return displayBooks(myLibrary);
 }
 
-
+// CREATE THE REMOVE BUTTON
 Book.prototype.createButton = function(parent) {
     let removeBtn = document.createElement('button');
     removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
     removeBtn.textContent = "X";
-    removeBtn.id = this.title;
     removeBtn.addEventListener('click', this.removeBook.bind(this), false);
         removeBtn.addEventListener('onclick', this.removeBook.bind(this));
         parent.appendChild(removeBtn);
 }
 
-
+// GET DATA FROM THE FORM
 form.onsubmit = function(e) {
-    e.preventDefault(); // prevent the form from submitting
+    e.preventDefault();
     title = document.querySelector('#title').value;
     author = document.querySelector('#author').value;
     pages = document.querySelector('#pages').value;
-    read = document.querySelector('#read').checked; // will return a boolean
+    read = document.querySelector('#read').checked;
 
     let newBook = new Book(title,author,pages,read);
     myLibrary.push(newBook);
@@ -60,37 +99,11 @@ form.onsubmit = function(e) {
     return displayBooks(myLibrary);
 }
 
-// create some objects and add them to the library array
 
-const deepWork = new Book(
-    "Deep Work: Rules for Focused Success in a Distracted World",
-    "Cal Newport",
-    296,
-    true,
-)
-const theVirginSuicides = new Book (
-    "The Virgin Suicides",
-    "Jeffrey Eugenides",
-    248,
-    true,
-);
-
-const eastOfEden = new Book(
-    "East of Eden",
-    "John Steinbeck",
-    601,
-    false,
-);
-
-myLibrary.push(deepWork, theVirginSuicides, eastOfEden);
-
-
-// display card for each item in array
-// FIRST remove everything, then display everything again LAST
+// DISPLAY FUNCTION
 function displayBooks(array) {
     container.innerHTML = ""; // remove everything 
     for (let i = 0; i < array.length; i++) {
-
         // create card
         let cardWrap = document.createElement('div');
         cardWrap.classList.add('card', 'lg:w-72', 'sm:w-2/3', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4');
@@ -115,44 +128,19 @@ function displayBooks(array) {
         bookPages.textContent = `${array[i].pages} pages`;
         cardBody.appendChild(bookPages);
 
-        // create the read toggle ...
-        let bookRead = document.createElement('div');
-        bookRead.classList.add('form-control', 'm-1', 'p-1');
-        // cannot use innerHTML - need to access toggle so we can switch it on and off 
-        // we can create the label with some existing template literal then append the toggle under it
-        let bookReadLabel = document.createElement('label');
-        bookReadLabel.classList.add('label', 'cursor-pointer');
-        bookReadLabel.setAttribute('for', 'read');
-        // add the span for the label text inside the label tag
-        bookReadLabel.innerHTML = `
-        <span class="label-text p-2 text-accent">Read:</span>
-        `;
-            // how to change read/unread colour - create the span in a variable & use an if statement to determine colour
-
-            // ** we are skipping the div that holds the toggle here **
-        // create the toggle
-        let readToggleByBook = document.createElement('input');
-        // add the classes to the input tag
-        readToggleByBook.classList.add('toggle', 'toggle-lg', 'toggle-accent');
-        // add the input type as checkbox
-        readToggleByBook.setAttribute('type', 'checkbox');
-        // we can set the input's id to a number per book in array
-        readToggleByBook.setAttribute(`id`, `readToggle${i+1}`);
-        // if toggle checked is true, set the book's newly created toggle to checked as well
-        array[i].read ? readToggleByBook.checked = true : readToggleByBook.checked = false;
-        // append the input to the label 
-        bookReadLabel.appendChild(readToggleByBook);
-        bookRead.appendChild(bookReadLabel);
-        
-        // ... append the read toggle to the card display
-        cardBody.appendChild(bookRead);
-
-        // append remove btn
+        // append the read toggle and remove button
+        array[i].createToggle(cardBody);
         array[i].createButton(cardBody);
     }
-
     console.log(myLibrary);
 }
 
+// create some objects and add them to the library array
+const deepWork = new Book("Deep Work: Rules for Focused Success in a Distracted World", "Cal Newport", 296, true);
+const theVirginSuicides = new Book ("The Virgin Suicides","Jeffrey Eugenides",248,true);
+const eastOfEden = new Book("East of Eden","John Steinbeck",601,false);
+myLibrary.push(deepWork, theVirginSuicides, eastOfEden);
+
+// CALL THE DISPLAY FUNCTION ON PAGE LOAD
 displayBooks(myLibrary);
 
