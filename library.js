@@ -57,7 +57,7 @@ Book.prototype.createToggle = function(parent) {
         this.read ? readToggle.checked = true : readToggle.checked = false;
 
         readToggle.addEventListener('click', this.bookRead.bind(this), false);
-        readToggle.addEventListener('onclick', this.bookRead.bind(this));
+        // readToggle.addEventListener('onclick', this.bookRead.bind(this));
 
         bookReadLabel.appendChild(readToggle);
         bookReadContainer.appendChild(bookReadLabel);
@@ -81,7 +81,7 @@ Book.prototype.createButton = function(parent) {
     removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
     removeBtn.textContent = "X";
     removeBtn.addEventListener('click', this.removeBook.bind(this), false);
-        removeBtn.addEventListener('onclick', this.removeBook.bind(this));
+        // removeBtn.addEventListener('onclick', this.removeBook.bind(this));
         parent.appendChild(removeBtn);
 }
 
@@ -106,15 +106,15 @@ function displayBooks(array) {
     for (let i = 0; i < array.length; i++) {
         // create card
         let cardWrap = document.createElement('div');
-        cardWrap.classList.add('card', 'lg:w-72', 'sm:w-2/3', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4');
+        cardWrap.classList.add('card', 'm-w-sm', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4');
         let cardBody = document.createElement('div');
-        cardBody.classList.add('card-body', 'text-center');
+        cardBody.classList.add('card-body', 'text-center', 'm-w-xs');
         container.appendChild(cardWrap);
         cardWrap.appendChild(cardBody);
 
         // append title
         let bookTitle = document.createElement('p');
-        bookTitle.classList.add('font-bold', 'text-secondary')
+        bookTitle.classList.add('font-bold', 'text-secondary', 'm-w-xs')
         bookTitle.textContent = `${array[i].title}`;
         cardBody.appendChild(bookTitle);
 

@@ -29,87 +29,88 @@
     </style>
 </head>
 
-<header class="m-4 text-3xl font-bold text-center">
-    <span class="material-icons md-48">
-        menu_book
-    </span>
+<body>
 
-    <h1 class="m-4">Library</h1>
-</header>
+    <header class="p-8 text-3xl font-bold text-center">
+        <span class="material-icons md-48">
+            menu_book
+        </span>
 
-<main class="m-8">
+        <h1 class="m-4">Library</h1>
+    </header>
 
-    <section id="form-section" class="flex flex-col justify-center">
+    <main class="m-8">
 
-        <h2 class="text-2xl font-bold text-primary text-center">Add new book to collection:</h2>
+        <section id="form-section" class="flex flex-col justify-center">
 
-        <form class="border-2 rounded-xl m-4" id="form">
+            <h2 class="text-2xl font-bold text-primary text-center">Add new book to collection:</h2>
 
-            <p class="text-xs justify-items-center text-center">* Required field</p>
-            <!-- test classes for tailwind-->
-            <!-- <button class="btn-error btn-xs btn-primary btn-circle m-1 text-white removeBtn">All Styles</button> -->
+            <form class="border-2 rounded-xl m-4" id="form">
 
-            <div class="flex flex-wrap justify-center">
-                <div class="flex flex-wrap p-1 text-center justify-center">
-                    <div class="form-control m-1 p-1">
-                        <label class="label cursor-pointer" for="title">
-                            <span class="label-text p-2">Title:*</span>
-                            <input type="text" id="title" name="book_title" placeholder="Steve Jobs"
-                                class="bg-white input input-bordered input-primary input-sm" required>
-                        </label>
+                <p class="text-xs justify-items-center text-center">* Required field</p>
+                <!-- test classes for tailwind-->
+                <!-- <button class="btn-error btn-xs btn-primary btn-circle m-1 text-white removeBtn">All Styles</button> -->
+
+                <div class="flex flex-wrap justify-center">
+                    <div class="flex flex-wrap p-1 text-center justify-center">
+                        <div class="form-control m-1 p-1">
+                            <label class="label cursor-pointer" for="title">
+                                <span class="label-text p-2">Title:*</span>
+                                <input type="text" id="title" name="book_title" placeholder="Steve Jobs"
+                                    class="bg-white input input-bordered input-primary input-sm" required>
+                            </label>
+                        </div>
+                        <div class="form-control m-1 p-1">
+                            <label class="label cursor-pointer" for="author">
+                                <span class="label-text p-2">Author:*</span>
+                                <input type="text" id="author" name="book_author" placeholder="Walter Isaacson"
+                                    class="input input-bordered input-primary input-sm" required>
+                            </label>
+                        </div>
+                        <div class="form-control m-1 p-1">
+                            <label class="label cursor-pointer" for="pages">
+                                <span class="label-text p-2">Pages:</span>
+                                <input type="number" id="pages" name="book_pages" placeholder="710"
+                                    class="input input-bordered input-sm">
+                            </label>
+                        </div>
+                        <div class="form-control m-1 p-1">
+                            <label class="label cursor-pointer" for="read">
+                                <span class="label-text p-2 text-accent">Read:</span>
+                                <div>
+                                    <input class="toggle toggle-lg toggle-accent" type="checkbox" id="read"
+                                        name="book_read">
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-control m-1 p-1">
-                        <label class="label cursor-pointer" for="author">
-                            <span class="label-text p-2">Author:*</span>
-                            <input type="text" id="author" name="book_author" placeholder="Walter Isaacson"
-                                class="input input-bordered input-primary input-sm" required>
-                        </label>
+
+                    <div class="flex lg:justify-center align-middle m-4">
+
+                        <div class="text-center">
+                            <button id="add-button" class="btn-primary rounded-md p-2 text-white" type="submit">Add
+                                book</button>
+                        </div>
+
                     </div>
-                    <div class="form-control m-1 p-1">
-                        <label class="label cursor-pointer" for="pages">
-                            <span class="label-text p-2">Pages:</span>
-                            <input type="number" id="pages" name="book_pages" placeholder="710"
-                                class="input input-bordered input-sm">
-                        </label>
-                    </div>
-                    <div class="form-control m-1 p-1">
-                        <label class="label cursor-pointer" for="read">
-                            <span class="label-text p-2 text-accent">Read:</span>
-                            <div>
-                                <input class="toggle toggle-lg toggle-accent" type="checkbox" id="read"
-                                    name="book_read">
-                            </div>
-                        </label>
-                    </div>
+
                 </div>
 
-                <div class="flex lg:justify-center align-middle m-4">
 
-                    <div class="text-center">
-                        <button id="add-button" class="btn-primary rounded-md p-2 text-white" type="submit">Add
-                            book</button>
-                    </div>
 
-                </div>
+            </form>
+        </section>
+
+        <!-- <div class="card shadow-xl m-5 p-4 w-64 text-center">Text</div> -->
+
+        <section id="library-section">
+            <div class="container grid lg:grid-cols-4 sm:grid-cols-2 gap-4">
+
 
             </div>
+        </section>
+    </main>
 
-
-
-        </form>
-    </section>
-
-    <!-- <div class="card shadow-xl m-5 p-4 w-64 text-center">Text</div> -->
-
-    <section id="library-section">
-        <div class="container grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5 auto-rows-auto">
-
-
-        </div>
-    </section>
-</main>
-
-<body>
     <script src="./library.js"></script>
 </body>
 
