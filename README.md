@@ -27,8 +27,8 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 - Fix duplicate book array issue - *fixed: clear the container first on calling the display function, then run the rest of the display function.*
 - Add read toggle to book display - *fixed - new issue below*
 - assign each book an id - *fixed - create a global variable and increment it on the book constructor so the id is always different and doesn't change when items are removed from the array*
-- change read status of book in library array on toggle
 - Add a remove book function - *fixed: created the button and it's corresponding function on the **constructor**, get the index of the item in the array, and remove it with splice()*
+- change read status of book in library array on toggle - *fixed - created the toggle and function on the constructor - the function sets the read value to the opposite of itself on click*
 - Add a function to select & remove all selected books at once
 - Center the library 'cards' in the container
 - Create form popup modal
