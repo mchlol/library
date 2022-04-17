@@ -1330,6 +1330,23 @@ body[dir="rtl"] .checkbox:checked,
   margin: 1.25rem;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .flex {
   display: flex;
 }
@@ -1338,32 +1355,16 @@ body[dir="rtl"] .checkbox:checked,
   display: grid;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
 .w-64 {
   width: 16rem;
 }
 
+.w-screen {
+  width: 100vw;
+}
+
 .cursor-pointer {
   cursor: pointer;
-}
-
-.auto-rows-auto {
-  grid-auto-rows: auto;
-}
-
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1374,20 +1375,8 @@ body[dir="rtl"] .checkbox:checked,
   flex-wrap: wrap;
 }
 
-.place-items-center {
-  place-items: center;
-}
-
-.items-center {
-  align-items: center;
-}
-
 .justify-center {
   justify-content: center;
-}
-
-.justify-evenly {
-  justify-content: space-evenly;
 }
 
 .justify-items-center {
@@ -1396,10 +1385,6 @@ body[dir="rtl"] .checkbox:checked,
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-6 {
-  gap: 1.5rem;
 }
 
 .rounded-xl {
@@ -1414,14 +1399,18 @@ body[dir="rtl"] .checkbox:checked,
   border-width: 2px;
 }
 
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-slate-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+.p-8 {
+  padding: 2rem;
 }
 
 .p-1 {
@@ -1434,18 +1423,6 @@ body[dir="rtl"] .checkbox:checked,
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-5 {
-  padding: 1.25rem;
-}
-
-.p-48 {
-  padding: 12rem;
-}
-
-.p-8 {
-  padding: 2rem;
 }
 
 .text-center {
@@ -1490,6 +1467,16 @@ body[dir="rtl"] .checkbox:checked,
   color: hsl(var(--a) / var(--tw-text-opacity));
 }
 
+.text-neutral {
+  --tw-text-opacity: 1;
+  color: hsl(var(--n) / var(--tw-text-opacity));
+}
+
+.text-secondary {
+  --tw-text-opacity: 1;
+  color: hsl(var(--s) / var(--tw-text-opacity));
+}
+
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -1503,10 +1490,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 
 @media (min-width: 1024px) {
-  .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
