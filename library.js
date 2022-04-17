@@ -35,8 +35,10 @@ Book.prototype.bookRead = function() {
 Book.prototype.createToggle = function(parent) {
         // create the read toggle ...
         let bookReadContainer = document.createElement('div');
+        bookReadContainer.setAttribute('id', 'toggle-holder-holder');
         bookReadContainer.classList.add('form-control', 'm-1', 'p-1');
         let bookReadLabel = document.createElement('label');
+        bookReadLabel.setAttribute('id', 'toggle-holder');
         bookReadLabel.classList.add('label', 'cursor-pointer', 'self-center', 'justify-center');
         bookReadLabel.setAttribute('for', 'read');
         bookReadLabel.innerHTML = `
