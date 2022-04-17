@@ -18,8 +18,12 @@ Object constructor & prototype inheritance practice for [The Odin Project](https
 ## About
 
 The aim of this project is to create a single page library app, where a user can add information about a book and have it appear on the page.  
-One objective was to have a form popup on a button click, to enter the info, but I considered it better UX to have the form at the top of the page so it's more easily accessible, and more obvious how to add books to the library. *I should probably do it the way you're supposed to though.*  
-I used TailwindCSS for the first time on this project, it's very cool and makes things like themes and toggles a lot easier, but I do prefer to write my own CSS - it's way more fun.  
+One objective was to have a form popup on a button click, to enter the info, but I considered it better UX to have the form at the top of the page so it's more easily accessible, and more obvious how to add books to the library. However, I am no UX expert and it does take up precious library book space, plus it would be good practice to build and style a modal.  
+I used TailwindCSS for the first time on this project, it's very cool and makes things like themes and toggles a lot easier, but I do prefer to write my own CSS so I really know what's going on (plus I might forget how).  
+
+
+## Notes
+Tailwind is great and all but I had a lot of trouble with the DaisyUI indicator classes. I used this to put the remove button on the top corner of each book, however it wreaked havoc on the rest of my styles. I ended up rewriting the class and putting it under the material icons size classes in the head of my html. Not ideal, maybe? But it worked a treat. 💃 
 
 
 ### TO DO
@@ -29,7 +33,7 @@ I used TailwindCSS for the first time on this project, it's very cool and makes 
 - assign each book an id - *fixed - create a global variable and increment it on the book constructor so the id is always different and doesn't change when items are removed from the array*
 - Add a remove book function - *fixed: created the button and it's corresponding function on the **constructor**, get the index of the item in the array, and remove it with splice()*
 - change read status of book in library array on toggle - *fixed - created the toggle and function on the constructor - the function sets the read value to the opposite of itself on click*
-- Center the library 'cards' in the container
+- Center the library 'cards' in the container - *fixed-sort of: went through the two section classes and made sure they all matched. Haven't found a way to centre the grid children when there aren't enough to fill a row.*
 - Create form popup modal
 - Add a function to select & remove all selected books at once
 - Add a function to sort books by read, no. of pages, or alphabetically etc. 
