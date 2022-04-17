@@ -139,7 +139,9 @@ function displayBooks(array) {
 const deepWork = new Book("Deep Work: Rules for Focused Success in a Distracted World", "Cal Newport", 296, true);
 const theVirginSuicides = new Book ("The Virgin Suicides","Jeffrey Eugenides",248,true);
 const eastOfEden = new Book("East of Eden","John Steinbeck",601,false);
-myLibrary.push(deepWork, theVirginSuicides, eastOfEden);
+const felafel = new Book("He Died with a Felafel in His Hand","John Birmingham",229,false);
+myLibrary.push(deepWork, theVirginSuicides, eastOfEden,felafel);
+
 
 // CALL THE DISPLAY FUNCTION ON PAGE LOAD
 displayBooks(myLibrary);
