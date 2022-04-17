@@ -114,7 +114,7 @@ function displayBooks(array) {
 
         // append title
         let bookTitle = document.createElement('p');
-        bookTitle.classList.add('font-bold', 'text-secondary', 'm-w-xs')
+        bookTitle.classList.add('font-bold', 'text-primary', 'm-w-xs')
         bookTitle.textContent = `${array[i].title}`;
         cardBody.appendChild(bookTitle);
 
