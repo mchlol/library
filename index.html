@@ -26,13 +26,25 @@
         .material-icons.md-48 {
             font-size: 48px;
         }
+
+        .gradient-bg {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 41%, rgba(91, 199, 198, 1) 100%);
+        }
+
+        .indicator {
+            position: relative;
+            display: block;
+            width: auto;
+            width: -webkit-auto;
+        }
     </style>
 </head>
 
 <body>
 
     <header class="m-8 text-3xl font-bold text-center">
-        <span class="material-icons md-48 text-secondary">
+        <span class="material-icons md-48 text-primary">
             menu_book
         </span>
 
@@ -45,12 +57,17 @@
 
             <h2 class="text-2xl font-bold text-primary text-center">Add new book to collection:</h2>
 
-            <form class="border-2 rounded-xl m-4" id="form">
+            <!-- <div class="indicator">
+                <span class="indicator-item badge badge-secondary"></span>
+                <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+            </div> -->
+
+            <form class="border-2 rounded-xl" id="form">
 
                 <p class="text-xs justify-items-center text-center mt-4">* Required field</p>
 
                 <div class="flex flex-wrap justify-center">
-                    <div class="flex flex-wrap p-1 text-center justify-center">
+                    <div class="flex flex-wrap text-center justify-center">
                         <div class="form-control m-1 p-1">
                             <label class="label cursor-pointer" for="title">
                                 <span class="label-text p-2">Title:*</span>
@@ -86,7 +103,8 @@
                     <div class="flex lg:justify-center align-middle m-4">
 
                         <div class="text-center">
-                            <button id="add-button" class="btn-primary rounded-md p-2 text-white" type="submit">Add
+                            <button id="add-button" class="btn-primary rounded-md p-2 text-white focus:ring-2"
+                                type="submit">Add
                                 book</button>
                         </div>
 
@@ -99,13 +117,13 @@
             </form>
         </section>
 
-        <!-- <div class="card shadow-xl m-5 p-4 w-64 text-center">Text</div> -->
+        <!-- <div class="card m-w-sm bg-base-100 shadow-xl m-4 p-4"></div> -->
+        <!-- <button class="btn-error btn-xs btn-circle m-1 text-white removeBtn"></button> -->
 
-        <section id="library-section" class="flex flex-col justify-center">
-            <div class="container mx-auto border-2 rounded-xl grid lg:grid-cols-4 sm:grid-cols-2 gap-4 m-4">
+        <div class="flex flex-col justify-center border-2 rounded-xl mt-8">
 
-
-            </div>
+            <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4"></div>
+        </div>
         </section>
     </main>
 
