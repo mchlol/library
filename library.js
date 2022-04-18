@@ -153,3 +153,16 @@ myLibrary.push(deepWork, theVirginSuicides, eastOfEden,felafel);
 // CALL THE DISPLAY FUNCTION ON PAGE LOAD
 displayBooks(myLibrary);
 
+function sortBooks(sortOrder) {
+    if (sortOrder === "alpha-title") {
+        myLibrary.sort((a, b) => (a.title > b.title) ? 1 : -1);
+    } else if (sortOrder === "alpha-author") {
+        myLibrary.sort((a, b) => (a.author > b.author) ? 1 : -1);
+        // sorts by author first name only!
+    } else if (sortOrder === "id") {
+        myLibrary.sort((a, b) => (a.bookID > b.bookID) ? 1 : -1);
+    } else if (sortOrder === "pages") {
+        myLibrary.sort((a, b) => (a.pages > b.pages) ? 1 : -1);
+    }
+    return displayBooks(myLibrary);
+}
