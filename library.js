@@ -27,24 +27,19 @@ function Book(title, author, pages, read) {
 // TOOGLE BOOK READ/UNREAD FUNCTION
 
 Book.prototype.bookRead = function() {
-    console.log(`Toggle read on bookID ${this.bookID}`);
-    console.log(this);
-
     let indexOfThis = myLibrary.indexOf(this);
-    console.log(`index number: ${indexOfThis}`);
     myLibrary[indexOfThis].read = !this.read; // set it to it's opposite on click
-
-    // change the value in the array
-    // myLibrary[indexOfThis].read ? readToggle.checked = true : readToggle.checked = false;
 }
 
 // CREATE THE READ TOGGLE
 Book.prototype.createToggle = function(parent) {
         // create the read toggle ...
         let bookReadContainer = document.createElement('div');
+        bookReadContainer.setAttribute('id', 'toggle-holder-holder');
         bookReadContainer.classList.add('form-control', 'm-1', 'p-1');
         let bookReadLabel = document.createElement('label');
-        bookReadLabel.classList.add('label', 'cursor-pointer');
+        bookReadLabel.setAttribute('id', 'toggle-holder');
+        bookReadLabel.classList.add('label', 'cursor-pointer', 'self-center', 'justify-center');
         bookReadLabel.setAttribute('for', 'read');
         bookReadLabel.innerHTML = `
         <span class="label-text p-2 text-accent">Read:</span>
@@ -66,11 +61,7 @@ Book.prototype.createToggle = function(parent) {
 
 // REMOVE BOOK FUNCTION
 Book.prototype.removeBook = function() {
-    console.log(`Remove bookID ${this.bookID}`);
-    console.log(this);
-
     let indexOfThis = myLibrary.indexOf(this);
-    console.log(`index number: ${indexOfThis}`);
     myLibrary.splice(indexOfThis,1);
     return displayBooks(myLibrary);
 }
@@ -78,7 +69,7 @@ Book.prototype.removeBook = function() {
 // CREATE THE REMOVE BUTTON
 Book.prototype.createButton = function(parent) {
     let removeBtn = document.createElement('button');
-    removeBtn.classList.add('btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
+    removeBtn.classList.add('indicator-item', 'btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
     removeBtn.textContent = "X";
     removeBtn.addEventListener('click', this.removeBook.bind(this), false);
         // removeBtn.addEventListener('onclick', this.removeBook.bind(this));
@@ -106,15 +97,19 @@ function displayBooks(array) {
     for (let i = 0; i < array.length; i++) {
         // create card
         let cardWrap = document.createElement('div');
-        cardWrap.classList.add('card', 'm-w-sm', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4');
+        cardWrap.classList.add('indicator', 'rounded-xl', 'm-w-sm', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4', 'w-auto', 'block');
+        
+        // button as sibling to cardBody - to create indicator element
+        array[i].createButton(cardWrap);
+        
         let cardBody = document.createElement('div');
-        cardBody.classList.add('card-body', 'text-center', 'm-w-xs');
+        cardBody.classList.add('text-center', 'm-w-xs'); // removed class 'card-body'
         container.appendChild(cardWrap);
         cardWrap.appendChild(cardBody);
 
         // append title
         let bookTitle = document.createElement('p');
-        bookTitle.classList.add('font-bold', 'text-secondary', 'm-w-xs')
+        bookTitle.classList.add('font-bold', 'text-primary', 'm-w-xs')
         bookTitle.textContent = `${array[i].title}`;
         cardBody.appendChild(bookTitle);
 
@@ -130,16 +125,16 @@ function displayBooks(array) {
 
         // append the read toggle and remove button
         array[i].createToggle(cardBody);
-        array[i].createButton(cardBody);
     }
-    console.log(myLibrary);
 }
 
 // create some objects and add them to the library array
 const deepWork = new Book("Deep Work: Rules for Focused Success in a Distracted World", "Cal Newport", 296, true);
 const theVirginSuicides = new Book ("The Virgin Suicides","Jeffrey Eugenides",248,true);
 const eastOfEden = new Book("East of Eden","John Steinbeck",601,false);
-myLibrary.push(deepWork, theVirginSuicides, eastOfEden);
+const felafel = new Book("He Died with a Felafel in His Hand","John Birmingham",229,false);
+myLibrary.push(deepWork, theVirginSuicides, eastOfEden,felafel);
+
 
 // CALL THE DISPLAY FUNCTION ON PAGE LOAD
 displayBooks(myLibrary);
