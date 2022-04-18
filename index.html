@@ -48,7 +48,7 @@
             menu_book
         </span>
 
-        <h1 class="mt-4 text-neutral">Library</h1>
+        <h1 class="mt-4">Library</h1>
     </header>
 
     <main class="m-8">
@@ -74,14 +74,14 @@
                             <label class="label cursor-pointer" for="author">
                                 <span class="label-text p-2">Author:*</span>
                                 <input type="text" id="author" name="book_author" placeholder="Walter Isaacson"
-                                    class="input input-bordered input-primary input-sm" required>
+                                    class="bg-white input input-bordered input-primary input-sm" required>
                             </label>
                         </div>
                         <div class="form-control">
                             <label class="label cursor-pointer" for="pages">
                                 <span class="label-text p-2">Pages:</span>
                                 <input type="number" id="pages" name="book_pages" placeholder="710"
-                                    class="input input-bordered input-sm">
+                                    class="bg-white input input-bordered input-sm">
                             </label>
                         </div>
                         <div class="form-control">
@@ -115,10 +115,15 @@
         <!-- <div class="card m-w-sm bg-base-100 shadow-xl m-4 p-4"></div> -->
         <!-- <button class="btn-error btn-xs btn-circle m-1 text-white removeBtn"></button> -->
 
-        <div class="flex flex-col justify-center border-2 rounded-xl mt-8">
 
-            <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4"></div>
-        </div>
+        <section>
+            <div class="flex flex-col justify-center border-2 rounded-xl mt-8">
+                <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4">
+                    Test card go here!
+                </div>
+
+                <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4"></div>
+            </div>
         </section>
     </main>
 

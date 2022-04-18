@@ -98,30 +98,44 @@ function displayBooks(array) {
         // create card
         let cardWrap = document.createElement('div');
         cardWrap.classList.add('indicator', 'rounded-xl', 'm-w-sm', 'bg-base-100', 'shadow-xl', 'm-4', 'p-4', 'w-auto', 'block');
+        cardWrap.style.minHeight = "190px";
         
         // button as sibling to cardBody - to create indicator element
         array[i].createButton(cardWrap);
         
         let cardBody = document.createElement('div');
-        cardBody.classList.add('text-center', 'm-w-xs'); // removed class 'card-body'
+        cardBody.classList.add('text-center', 'm-w-xs', 'flex', 'min-h-full', 'flex-col', 'justify-between'); 
+        cardBody.setAttribute('id', 'card-body');
         container.appendChild(cardWrap);
         cardWrap.appendChild(cardBody);
 
+        let bookInfo = document.createElement('div');
+        bookInfo.setAttribute('id', 'book-info');
+        bookInfo.classList.add('flex', 'min-h-full', 'flex-col', 'justify-between');
+
         // append title
         let bookTitle = document.createElement('p');
-        bookTitle.classList.add('font-bold', 'text-primary', 'm-w-xs')
+        bookTitle.classList.add('font-bold', 'text-primary');
+        bookTitle.style.maxWidth = "25ch";
+        bookTitle.style.margin = "0 auto";
         bookTitle.textContent = `${array[i].title}`;
-        cardBody.appendChild(bookTitle);
+        bookInfo.appendChild(bookTitle);
 
         // append author
         let bookAuthor = document.createElement('p');
         bookAuthor.textContent = `by ${array[i].author}`;
-        cardBody.appendChild(bookAuthor);
+        bookInfo.appendChild(bookAuthor);
 
         // append pages
+        if(array[i].pages) {
         let bookPages = document.createElement('p');
         bookPages.textContent = `${array[i].pages} pages`;
-        cardBody.appendChild(bookPages);
+        bookInfo.appendChild(bookPages);
+        } else {
+            console.log('no page count entered');
+        }
+
+        cardBody.appendChild(bookInfo);
 
         // append the read toggle and remove button
         array[i].createToggle(cardBody);
