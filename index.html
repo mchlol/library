@@ -32,6 +32,13 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 1) 41%, rgba(91, 199, 198, 1) 100%);
         }
 
+        .pattern-bg {
+            background-color: #FAF7F5;
+            opacity: 0.8;
+            background: radial-gradient(circle, transparent 20%, #FAF7F5 20%, #FAF7F5 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #FAF7F5 20%, #FAF7F5 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#EF9FBC 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #EF9FBC 2px, #FAF7F5 2px) -1px 0;
+            background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+        }
+
         .indicator {
             /* override component styles */
             position: relative;
@@ -71,9 +78,16 @@
                             </label>
                         </div>
                         <div class="form-control">
-                            <label class="label cursor-pointer" for="author">
-                                <span class="label-text p-2">Author:*</span>
-                                <input type="text" id="author" name="book_author" placeholder="Walter Isaacson"
+                            <label class="label cursor-pointer" for="authorLast">
+                                <span class="label-text p-2">Author Last Name:*</span>
+                                <input type="text" id="authorLast" name="book_authorLast" placeholder="Isaacson"
+                                    class="bg-white input input-bordered input-primary input-sm" required>
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label class="label cursor-pointer" for="authorFirst">
+                                <span class="label-text p-2">Author First Name:*</span>
+                                <input type="text" id="authorFirst" name="book_authorFirst" placeholder="Walter"
                                     class="bg-white input input-bordered input-primary input-sm" required>
                             </label>
                         </div>
@@ -112,15 +126,60 @@
             </form>
         </section>
 
+        <section>
+            <div id="sort-filter-wrap" class="text-center border-2 rounded-xl mt-8">
+                <div id="sort-wrap m-1">
+                    <h2 class="text-primary text-xl font-bold">Sort:</h2>
+                    <div class="input-holder">
+                        <label for="sort-title">
+                            <input type="radio" for="sort-title">
+                            <span class="m-1">By Title</span>
+                        </label>
+                        <label for="sort-author">
+                            <input type="radio" for="sort-author">
+                            <span class="m-1">By Author</span>
+                        </label>
+                        <label for="sort-pages">
+                            <input type="radio" for="sort-pages">
+                            <span class="m-1">By Pages</span>
+                        </label>
+                        <label for="sort-id">
+                            <input type="radio" for="sort-id">
+                            <span class="m-1">By Date Added</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="filter-wrap m-1">
+                    <h2 class="text-primary text-xl font-bold">Filter:</h2>
+                    <div class="input-holder">
+                        <label for="filter-read">
+                            <input type="radio" for="filter-read">
+                            <span class="m-1">By Read</span>
+                        </label>
+                        <label for="filter-unread">
+                            <input type="radio" for="filter-unread">
+                            <span class="m-1">By Unread</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center p-2">
+                    <button id="sort-button" class="btn-primary rounded-md p-2 text-white focus:ring-2">Sort</button>
+                    <button id="clear-button"
+                        class="btn-secondary rounded-md p-2 text-white focus:ring-2">Clear</button>
+                </div>
+            </div>
+        </section>
+
         <!-- <div class="card m-w-sm bg-base-100 shadow-xl m-4 p-4"></div> -->
         <!-- <button class="btn-error btn-xs btn-circle m-1 text-white removeBtn"></button> -->
 
 
         <section>
-            <div class="flex flex-col justify-center border-2 rounded-xl mt-8">
-                <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4">
+            <div class="flex flex-col justify-center border-2 rounded-xl mt-8 glass">
+                <!-- <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4">
                     Test card go here!
-                </div>
+                </div> -->
 
                 <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4"></div>
             </div>

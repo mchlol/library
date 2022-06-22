@@ -41,6 +41,7 @@ Tailwind is great and all but I had a lot of trouble with the DaisyUI indicator 
 
 #### Extra resources used
 
+- [Magic Pattern](https://www.magicpattern.design/tools/css-backgrounds)
 - ["Module #11 - Prototypes, 'this', 'new' and Inheritance", from Beginner JavaScript by Wes Bos](https://beginnerjavascript.com/)
 - [Create object from form](https://www.sitepoint.com/community/t/create-object-from-a-form/313057/6)
 - [How to save data in localStorage using JavaScript](https://dev.to/michaelburrows/how-to-save-data-in-localstorage-using-javascript-994)
@@ -48,3 +49,4 @@ Tailwind is great and all but I had a lot of trouble with the DaisyUI indicator 
 - [Removing a specific item from an array](https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array)
 - [Global ID variable idea came from this student solution by jwern](https://github.com/jwern/library-app)
 - [Delete a file from git and update in remote repo](https://stackoverflow.com/a/492591/17232226) - while watching my tailwind file I typed `-o /dist/output.css` instead of `-o ./dist/output.css` - forgot the dot before the location - and it duplicated the whole css file.  
+- [How to sort an array of objects by property value](https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/)
