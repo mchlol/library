@@ -15,24 +15,21 @@ let inputRead = document.querySelector('#read');
 
 let bookID = 0; // set a global variable 
 
-// book constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.bookID = bookID++; 
-}
+class Book {
+    constructor(title,authorLast,authorFirst,pages,read) {
+        this.title = title;
+        this.authorLast = authorLast;
+        this.authorFirst = authorFirst;
+        this.pages = pages;
+        this.read = read;
+        this.bookID = bookID++; 
+    }
+    bookRead() {
+        let indexOfThis = myLibrary.indexOf(this);
+        myLibrary[indexOfThis].read = !this.read;
+    }
 
-// TOOGLE BOOK READ/UNREAD FUNCTION
-
-Book.prototype.bookRead = function() {
-    let indexOfThis = myLibrary.indexOf(this);
-    myLibrary[indexOfThis].read = !this.read; // set it to it's opposite on click
-}
-
-// CREATE THE READ TOGGLE
-Book.prototype.createToggle = function(parent) {
+    createToggle(parent) {
         // create the read toggle ...
         let bookReadContainer = document.createElement('div');
         bookReadContainer.setAttribute('id', 'toggle-holder-holder');
@@ -57,34 +54,36 @@ Book.prototype.createToggle = function(parent) {
         bookReadLabel.appendChild(readToggle);
         bookReadContainer.appendChild(bookReadLabel);
         parent.appendChild(bookReadContainer);
+    }
+
+    removeBook() {
+        let indexOfThis = myLibrary.indexOf(this);
+        myLibrary.splice(indexOfThis,1);
+        return displayBooks(myLibrary);
+    }
+
+    createButton(parent) {
+        let removeBtn = document.createElement('button');
+        removeBtn.classList.add('indicator-item', 'btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
+        removeBtn.textContent = "X";
+        removeBtn.addEventListener('click', this.removeBook.bind(this), false);
+            // removeBtn.addEventListener('onclick', this.removeBook.bind(this));
+            parent.appendChild(removeBtn);
+    }
 }
 
-// REMOVE BOOK FUNCTION
-Book.prototype.removeBook = function() {
-    let indexOfThis = myLibrary.indexOf(this);
-    myLibrary.splice(indexOfThis,1);
-    return displayBooks(myLibrary);
-}
 
-// CREATE THE REMOVE BUTTON
-Book.prototype.createButton = function(parent) {
-    let removeBtn = document.createElement('button');
-    removeBtn.classList.add('indicator-item', 'btn-error', 'btn-xs', 'btn-circle', 'm-1', 'text-white', 'removeBtn');
-    removeBtn.textContent = "X";
-    removeBtn.addEventListener('click', this.removeBook.bind(this), false);
-        // removeBtn.addEventListener('onclick', this.removeBook.bind(this));
-        parent.appendChild(removeBtn);
-}
 
 // GET DATA FROM THE FORM
 form.onsubmit = function(e) {
     e.preventDefault();
     title = document.querySelector('#title').value;
-    author = document.querySelector('#author').value;
+    authorLast = document.querySelector('#authorLast').value;
+    authorFirst = document.querySelector('#authorFirst').value;
     pages = document.querySelector('#pages').value;
     read = document.querySelector('#read').checked;
 
-    let newBook = new Book(title,author,pages,read);
+    let newBook = new Book(title,authorLast,authorFirst,pages,read);
     myLibrary.push(newBook);
     form.reset();
     return displayBooks(myLibrary);
@@ -123,7 +122,7 @@ function displayBooks(array) {
 
         // append author
         let bookAuthor = document.createElement('p');
-        bookAuthor.textContent = `by ${array[i].author}`;
+        bookAuthor.textContent = `by ${array[i].authorFirst} ${array[i].authorLast}`;
         bookInfo.appendChild(bookAuthor);
 
         // append pages
@@ -143,26 +142,29 @@ function displayBooks(array) {
 }
 
 // create some objects and add them to the library array
-const deepWork = new Book("Deep Work: Rules for Focused Success in a Distracted World", "Cal Newport", 296, true);
-const theVirginSuicides = new Book ("The Virgin Suicides","Jeffrey Eugenides",248,true);
-const eastOfEden = new Book("East of Eden","John Steinbeck",601,false);
-const felafel = new Book("He Died with a Felafel in His Hand","John Birmingham",229,false);
+const deepWork = new Book("Deep Work: Rules for Focused Success in a Distracted World", "Newport","Cal", 296, true);
+const theVirginSuicides = new Book ("The Virgin Suicides","Eugenides","Jeffrey",248,true);
+const eastOfEden = new Book("East of Eden","Steinbeck","John",601,false);
+const felafel = new Book("He Died with a Felafel in His Hand","Birmingham","John",229,false);
 myLibrary.push(deepWork, theVirginSuicides, eastOfEden,felafel);
 
 
 // CALL THE DISPLAY FUNCTION ON PAGE LOAD
 displayBooks(myLibrary);
 
+// SORT 
 function sortBooks(sortOrder) {
-    if (sortOrder === "alpha-title") {
+    if (sortOrder === "sort-title") {
         myLibrary.sort((a, b) => (a.title > b.title) ? 1 : -1);
-    } else if (sortOrder === "alpha-author") {
+    } else if (sortOrder === "sort-author") {
         myLibrary.sort((a, b) => (a.author > b.author) ? 1 : -1);
         // sorts by author first name only!
-    } else if (sortOrder === "id") {
+    } else if (sortOrder === "sort-id") {
         myLibrary.sort((a, b) => (a.bookID > b.bookID) ? 1 : -1);
-    } else if (sortOrder === "pages") {
+    } else if (sortOrder === "sort-pages") {
         myLibrary.sort((a, b) => (a.pages > b.pages) ? 1 : -1);
     }
     return displayBooks(myLibrary);
 }
+
+// FILTER
