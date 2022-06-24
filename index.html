@@ -50,69 +50,75 @@
     <main class="m-8">
 
         <section id="form-section" class="flex flex-col justify-center">
+            <label for="add-book-modal" class="btn modal-button">Add new book</label>
 
-            <h2 class="text-2xl font-bold text-primary text-center">Add new book to collection:</h2>
+            <input type="checkbox" id="add-book-modal" class="modal-toggle" />
 
-            <form id="addNewBookForm" class="border-2 rounded-xl">
+            <div class="modal">
+                <div class="modal-box relative">
+                    <label for="add-book-modal" id="close-modal-btn"
+                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <form id="addNewBookForm" class="border-2 rounded-xl">
 
-                <p class="text-xs justify-items-center text-center mt-4">* Required field</p>
+                        <p class="text-xs justify-items-center text-center mt-4">* Required field</p>
 
-                <div class="flex flex-wrap justify-center items-center">
-                    <div class="flex flex-wrap text-center justify-center">
-                        <div class="form-control">
-                            <label class="label cursor-pointer" for="title">
-                                <span class="label-text p-2">Title:*</span>
-                                <input type="text" id="title" name="book_title" placeholder="Steve Jobs"
-                                    class="bg-white input input-bordered input-primary input-sm" required>
-                            </label>
-                        </div>
-                        <div class="form-control">
-                            <label class="label cursor-pointer" for="authorLast">
-                                <span class="label-text p-2">Author Last Name:*</span>
-                                <input type="text" id="authorLast" name="book_authorLast" placeholder="Isaacson"
-                                    class="bg-white input input-bordered input-primary input-sm" required>
-                            </label>
-                        </div>
-                        <div class="form-control">
-                            <label class="label cursor-pointer" for="authorFirst">
-                                <span class="label-text p-2">Author First Name:*</span>
-                                <input type="text" id="authorFirst" name="book_authorFirst" placeholder="Walter"
-                                    class="bg-white input input-bordered input-primary input-sm" required>
-                            </label>
-                        </div>
-                        <div class="form-control">
-                            <label class="label cursor-pointer" for="pages">
-                                <span class="label-text p-2">Pages:</span>
-                                <input type="number" id="pages" name="book_pages" placeholder="710"
-                                    class="bg-white input input-bordered input-sm">
-                            </label>
-                        </div>
-                        <div class="form-control">
-                            <label class="label cursor-pointer" for="read">
-                                <span class="label-text p-2 text-accent">Read:</span>
-                                <div>
-                                    <input class="toggle toggle-lg toggle-accent" type="checkbox" id="read"
-                                        name="book_read">
+                        <div class="flex flex-wrap justify-center items-center">
+                            <div class="flex flex-wrap text-center justify-center">
+                                <div class="form-control">
+                                    <label class="label cursor-pointer" for="title">
+                                        <span class="label-text p-2">Title:*</span>
+                                        <input type="text" id="title" name="book_title" placeholder="Steve Jobs"
+                                            class="bg-white input input-bordered input-primary input-sm" required>
+                                    </label>
                                 </div>
-                            </label>
+                                <div class="form-control">
+                                    <label class="label cursor-pointer" for="authorLast">
+                                        <span class="label-text p-2">Author Last Name:*</span>
+                                        <input type="text" id="authorLast" name="book_authorLast" placeholder="Isaacson"
+                                            class="bg-white input input-bordered input-primary input-sm" required>
+                                    </label>
+                                </div>
+                                <div class="form-control">
+                                    <label class="label cursor-pointer" for="authorFirst">
+                                        <span class="label-text p-2">Author First Name:*</span>
+                                        <input type="text" id="authorFirst" name="book_authorFirst" placeholder="Walter"
+                                            class="bg-white input input-bordered input-primary input-sm" required>
+                                    </label>
+                                </div>
+                                <div class="form-control">
+                                    <label class="label cursor-pointer" for="pages">
+                                        <span class="label-text p-2">Pages:</span>
+                                        <input type="number" id="pages" name="book_pages" placeholder="710"
+                                            class="bg-white input input-bordered input-sm">
+                                    </label>
+                                </div>
+                                <div class="form-control">
+                                    <label class="label cursor-pointer" for="read">
+                                        <span class="label-text p-2 text-accent">Read:</span>
+                                        <div>
+                                            <input class="toggle toggle-lg toggle-accent" type="checkbox" id="read"
+                                                name="book_read">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex lg:justify-center align-middle m-4">
+
+                                <div class="text-center">
+                                    <button id="add-button" class="btn-primary rounded-md p-2 text-white focus:ring-2"
+                                        type="submit">Add
+                                        book</button>
+                                </div>
+
+                            </div>
+
                         </div>
-                    </div>
 
-                    <div class="flex lg:justify-center align-middle m-4">
 
-                        <div class="text-center">
-                            <button id="add-button" class="btn-primary rounded-md p-2 text-white focus:ring-2"
-                                type="submit">Add
-                                book</button>
-                        </div>
 
-                    </div>
-
+                    </form>
                 </div>
-
-
-
-            </form>
         </section>
 
         <section>
