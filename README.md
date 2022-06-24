@@ -18,12 +18,16 @@ Object constructor & prototype inheritance practice for [The Odin Project](https
 ## About
 
 The aim of this project is to create a single page library app, where a user can add information about a book and have it appear on the page.  
-One objective was to have a form popup on a button click, to enter the info, but I considered it better UX to have the form at the top of the page so it's more easily accessible, and more obvious how to add books to the library. However, I am no UX expert and it does take up precious library book space, plus it would be good practice to build and style a modal.  
 I used TailwindCSS for the first time on this project, it's very cool and makes things like themes and toggles a lot easier, but I do prefer to write my own CSS so I really know what's going on (plus I might forget how).  
+It did make building the modal much easier than I expected.  
+
+## Class Refactor
+
+A few lessons later in the Odin Project we are tasked with refactoring the library code to use classes instead of the constructor method. VS Code wanted to do this for me which would have been much easier but I spent a lot of time on those lessons and managed to do it myself surprisingly easily. 🎉
 
 
 ## Notes
-Tailwind is great and all but I had a lot of trouble with the DaisyUI indicator classes. I used this to put the remove button on the top corner of each book, however it wreaked havoc on the rest of my styles. I ended up rewriting the class and putting it under the material icons size classes in the head of my html. Not ideal, maybe? But it worked a treat. 💃 
+I had a lot of trouble with the DaisyUI indicator classes. I used this to put the remove button on the top corner of each book, however it wreaked havoc on the rest of my styles. I ended up rewriting the class and putting it under the material icons size classes in the head of my html. Not ideal, maybe? But it worked a treat. 💃 
 
 
 ### TO DO
@@ -34,9 +38,9 @@ Tailwind is great and all but I had a lot of trouble with the DaisyUI indicator 
 - Add a remove book function - *fixed: created the button and it's corresponding function on the **constructor**, get the index of the item in the array, and remove it with splice()*
 - change read status of book in library array on toggle - *fixed - created the toggle and function on the constructor - the function sets the read value to the opposite of itself on click*
 - Center the library 'cards' in the container - *fixed-sort of: went through the two section classes and made sure they all matched. Haven't found a way to centre the grid children when there aren't enough to fill a row.*
-- Create form popup modal
+- Create form popup modal - *fixed - very easy to do with daisyui*
 - Add a function to select & remove all selected books at once
-- Add a function to sort books by read, no. of pages, or alphabetically etc. 
+- Add a function to sort books by read, no. of pages, or alphabetically etc. - *fixed - spent way too long on this trying to access form data from radio buttons, ended up using a select instead and using an if statement to access which option was selected*
 
 
 #### Extra resources used
