@@ -3,6 +3,7 @@ let myLibrary = [];
 const container = document.querySelector('.container');
 const form = document.querySelector('form');
 const addBtn = document.querySelector('#add-button')
+const modal = document.querySelector('#add-book-modal')
 
 let inputTitle = document.querySelector('#title');
 let inputAuthorLast = document.querySelector('#authorLast');
@@ -137,8 +138,6 @@ displayBooks(myLibrary);
 const sortForm = document.querySelector('#sortForm');
 sortForm.onsubmit = function(e) {
     e.preventDefault();
-
-    // get the radio button value and assign it to a variable
     let sortMethod = sortBySelect.value;
     sortBy(sortMethod);
     return displayBooks(myLibrary);
@@ -155,3 +154,10 @@ function sortBy(sortMethod) {
         return console.warn('no valid sort method found');
     }
 }
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  
