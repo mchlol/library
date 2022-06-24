@@ -134,18 +134,24 @@ myLibrary.push(deepWork, theVirginSuicides, eastOfEden,felafel);
 
 displayBooks(myLibrary);
 
-
-
 const sortForm = document.querySelector('#sortForm');
 sortForm.onsubmit = function(e) {
     e.preventDefault();
 
     // get the radio button value and assign it to a variable
-    let sortMethod = sortForm.value;
+    let sortMethod = sortBySelect.value;
     sortBy(sortMethod);
     return displayBooks(myLibrary);
 }
 
 function sortBy(sortMethod) {
-    myLibrary.sort((a,b) => (a.sortMethod > b.sortMethod) ? 1 : -1);
+    if (sortMethod === 'title') {
+        return myLibrary.sort((a,b) => (a.title > b.title) ? 1 : -1);
+    } else if (sortMethod === 'authorLast') {
+        return myLibrary.sort((a,b) => (a.authorLast > b.authorLast) ? 1 : -1);
+    } else if (sortMethod === 'pages') {
+        return myLibrary.sort((a,b) => (a.pages > b.pages) ? 1 : -1);
+    } else {
+        return console.warn('no valid sort method found');
+    }
 }
