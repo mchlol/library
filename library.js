@@ -138,8 +138,6 @@ displayBooks(myLibrary);
 const sortForm = document.querySelector('#sortForm');
 sortForm.onsubmit = function(e) {
     e.preventDefault();
-
-    // get the radio button value and assign it to a variable
     let sortMethod = sortBySelect.value;
     sortBy(sortMethod);
     return displayBooks(myLibrary);

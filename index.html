@@ -49,44 +49,44 @@
 
     <main class="m-8">
 
-        <section id="form-section" class="flex flex-col justify-center">
-            <label for="add-book-modal" class="btn modal-button">Add new book</label>
+        <section id="form-section" class="flex flex-col justify-center items-center">
+            <label for="add-book-modal" class="btn btn-primary flex-none text-white">Add new book</label>
 
             <input type="checkbox" id="add-book-modal" class="modal-toggle" />
 
             <div class="modal">
                 <div class="modal-box relative">
                     <label for="add-book-modal" id="close-modal-btn"
-                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        class="btn btn-sm btn-circle btn-error text-white absolute right-2 top-2">✕</label>
                     <form id="addNewBookForm" class="border-2 rounded-xl">
 
                         <p class="text-xs justify-items-center text-center mt-4">* Required field</p>
 
                         <div class="flex flex-wrap justify-center items-center">
-                            <div class="flex flex-wrap text-center justify-center">
+                            <div class="flex flex-col text-center justify-center items-center">
                                 <div class="form-control">
-                                    <label class="label cursor-pointer" for="title">
+                                    <label class="label cursor-pointer input-group" for="title">
                                         <span class="label-text p-2">Title:*</span>
                                         <input type="text" id="title" name="book_title" placeholder="Steve Jobs"
                                             class="bg-white input input-bordered input-primary input-sm" required>
                                     </label>
                                 </div>
                                 <div class="form-control">
-                                    <label class="label cursor-pointer" for="authorLast">
+                                    <label class="label cursor-pointer input-group" for="authorLast">
                                         <span class="label-text p-2">Author Last Name:*</span>
                                         <input type="text" id="authorLast" name="book_authorLast" placeholder="Isaacson"
                                             class="bg-white input input-bordered input-primary input-sm" required>
                                     </label>
                                 </div>
                                 <div class="form-control">
-                                    <label class="label cursor-pointer" for="authorFirst">
+                                    <label class="label cursor-pointer input-group" for="authorFirst">
                                         <span class="label-text p-2">Author First Name:*</span>
                                         <input type="text" id="authorFirst" name="book_authorFirst" placeholder="Walter"
                                             class="bg-white input input-bordered input-primary input-sm" required>
                                     </label>
                                 </div>
                                 <div class="form-control">
-                                    <label class="label cursor-pointer" for="pages">
+                                    <label class="label cursor-pointer input-group" for="pages">
                                         <span class="label-text p-2">Pages:</span>
                                         <input type="number" id="pages" name="book_pages" placeholder="710"
                                             class="bg-white input input-bordered input-sm">
@@ -110,13 +110,8 @@
                                         type="submit">Add
                                         book</button>
                                 </div>
-
                             </div>
-
                         </div>
-
-
-
                     </form>
                 </div>
         </section>
@@ -132,7 +127,7 @@
 
 
                 <div class="text-center p-2">
-                    <input type="submit" value="Sort" class="btn-primary rounded-md p-2 text-white focus:ring-2">
+                    <input type="submit" value="Sort" class="btn btn-primary p-2 text-white focus:ring-2">
                 </div>
 
         </section>
