@@ -53,7 +53,7 @@
 
             <h2 class="text-2xl font-bold text-primary text-center">Add new book to collection:</h2>
 
-            <form action="./index.html" class="border-2 rounded-xl" id="addNewBookForm">
+            <form id="addNewBookForm" class="border-2 rounded-xl">
 
                 <p class="text-xs justify-items-center text-center mt-4">* Required field</p>
 
@@ -116,27 +116,14 @@
         </section>
 
         <section>
-            <form action="./index.html" class="border-2 rounded-xl text-center mt-8" id="sortForm">
+            <form id="sortForm" class="border-2 rounded-xl text-center mt-8">
+                <h2 class="text-primary text-lg font-bold">Sort library by:</h2>
+                <select name="sort" id="sortBySelect" form="sortForm" class="select select-bordered w-full max-w-xs">
+                    <option value="title">Title</option>
+                    <option value="authorLast">Author</option>
+                    <option value="pages">Pages</option>
+                </select>
 
-                <fieldset>
-                    <legend class="text-primary text-lg font-bold">Sort library by:</legend>
-                    <div id="sort-wrap m-1">
-                        <div class="input-holder">
-                            <label for="sort-title">
-                                <input type="radio" name="sort-title" id="sort-title">
-                                <span class="m-1">Title</span>
-                            </label>
-                            <label for="sort-author">
-                                <input type="radio" name="sort-author" id="sort-author">
-                                <span class="m-1">Author</span>
-                            </label>
-                            <label for="sort-pages">
-                                <input type="radio" name="sort-pages" id="sort-pages">
-                                <span class="m-1">Pages</span>
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
 
                 <div class="text-center p-2">
                     <input type="submit" value="Sort" class="btn-primary rounded-md p-2 text-white focus:ring-2">
@@ -147,7 +134,11 @@
         <section>
             <div class="flex flex-col justify-center border-2 rounded-xl mt-8 glass">
 
-                <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4"></div>
+                <div class="container mx-auto grid lg:grid-cols-4 sm:grid-cols-2 gap-2 m-4">
+                    <!-- I have to leave these here in case my components stop working -->
+                    <!-- <div class="card m-w-sm bg-base-100 shadow-xl m-4 p-4"></div> -->
+                    <!-- <button class="btn-error btn-xs btn-circle m-1 text-white removeBtn"></button> -->
+                </div>
             </div>
         </section>
     </main>
